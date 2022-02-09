@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html>
+<%- include("../partials/head.ejs") %>
 
-<head>
-  <meta charset="utf-8" />
-  <title>App</title>
-  <link rel="stylesheet" href="/css/app.css">
-</head>
+  <body>
+    <% if (user) { %>
+      <h2 class="text-3xl font-bold underline">
+        <%= user.name %>
+      </h2>
+      <% } %>
+  </body>
 
-<body>
-  <% if (user) { %>
-    <h2 class="text-3xl font-bold underline">
-      <%= user.name %>
-    </h2>
-    <% } %>
-</body>
-
-</html>
+  </html>

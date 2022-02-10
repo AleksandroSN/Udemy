@@ -1,0 +1,18 @@
+<%- include("../partials/head.ejs") %>
+
+  <body class="container mx-auto px-4">
+    <h1 class="text-2xl font-bold underline">Test page for campground</h1>
+    <h2 class="text-xl font-bold underline"><a href="/campgrounds/new">Add new campground</a></h2>
+    <ul class="list-disc">
+      <% for (let campground of campgrounds) {%>
+        <li>
+          <a href="/campgrounds/<%= campground._id %>">
+            <%= campground.title %>
+          </a>
+        </li>
+        <% } %>
+
+    </ul>
+  </body>
+
+  </html>

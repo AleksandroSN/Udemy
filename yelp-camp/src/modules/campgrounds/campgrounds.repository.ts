@@ -55,7 +55,7 @@ export class CampgroundRepository {
   }
 
   async remove(id: string) {
-    const deleteResult = await this.campgroundModel.remove(id);
+    const deleteResult = await this.campgroundModel.findByIdAndDelete(id);
     return deleteResult;
   }
 }

@@ -9,5 +9,6 @@ import { CampgroundRepository } from "./campgrounds.repository";
   imports: [MongooseModule.forFeature([{ name: Campground.name, schema: CampgroundSchema }])],
   controllers: [CampgroundsController],
   providers: [CampgroundsService, CampgroundRepository],
+  exports: [CampgroundsService],
 })
 export class CampgroundsModule {}

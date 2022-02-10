@@ -28,5 +28,7 @@ module.exports = {
     "object-curly-newline": "off",
     "@typescript-eslint/indent": "off",
     "new-cap": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/naming-convention": "off",
   },
 };

@@ -1,13 +1,24 @@
 <%- include("../partials/head.ejs") %>
 
-  <body>
-    Test page for campground
-    <h2 class="text-2xl font-bold underline">
+  <body class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold underline">Test page for campground</h2>
+    <a href="/campgrounds/<%= _id %>/edit">Edit</a>
+    <p>
       <%= title %>
-        <%= price %>
-          <%= description %>
-            <%= location %>
-    </h2>
+    </p>
+    <p>
+      <%= price %>
+    </p>
+    <p>
+      <%= description %>
+    </p>
+    <p>
+      <%= location %>
+    </p>
+    <a href="./" class="text-lg font-bold">BACK</a>
+    <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">DELETE</button>
+    </form>
   </body>
 
   </html>

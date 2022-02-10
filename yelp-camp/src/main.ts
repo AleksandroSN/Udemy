@@ -3,6 +3,7 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { Logger } from "@nestjs/common";
 import { AppModule } from "@modules";
+import * as methodOverride from "method-override";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -12,6 +13,7 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, "..", "public"));
   app.setBaseViewsDir(join(__dirname, "..", "views"));
   app.setViewEngine("ejs");
+  app.use(methodOverride("_method"));
 
   await app.listen(PORT, HOST, () => {
     Logger.log(`Nest listening on http://${HOST}:${PORT}`, "Bootstrap");

@@ -9,6 +9,7 @@ export class AppController {
   @Get()
   @Page("home")
   getHello() {
-    return this.appService.getHello();
+    const user = this.appService.getHello();
+    return { ...user, docTitle: "Home page" };
   }
 }

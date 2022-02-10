@@ -25,5 +25,8 @@ module.exports = {
     "@typescript-eslint/quotes": ["error", "double"],
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
+    "object-curly-newline": "off",
+    "@typescript-eslint/indent": "off",
+    "new-cap": "off",
   },
 };

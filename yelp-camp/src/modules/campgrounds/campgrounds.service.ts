@@ -26,4 +26,8 @@ export class CampgroundsService {
   async remove(id: string) {
     return this.campgroundRepository.remove(id);
   }
+
+  async seedData(createCampgroundDto: CreateCampgroundDto[]) {
+    return this.campgroundRepository.seedData(createCampgroundDto);
+  }
 }

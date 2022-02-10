@@ -45,6 +45,14 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Seed data
+
+For seed data use next command
+
+```
+npx nestjs-command seed:many
+```
+
 ## Test
 
 ```bash

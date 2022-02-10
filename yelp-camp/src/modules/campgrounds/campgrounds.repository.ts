@@ -21,6 +21,15 @@ export class CampgroundRepository {
     }
   }
 
+  async seedData(createCampgroundDto: CreateCampgroundDto[]) {
+    try {
+      const campgrounds = await this.campgroundModel.insertMany(createCampgroundDto);
+      return campgrounds;
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
+  }
+
   async findAll() {
     const allCampgrounds = await this.campgroundModel.find({});
     if (!allCampgrounds) {

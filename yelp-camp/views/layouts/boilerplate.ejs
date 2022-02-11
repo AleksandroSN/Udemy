@@ -11,8 +11,12 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body class="container mx-auto px-4">
-  <%- body %>
+<body>
+  <%- include("../partials/navbar") %>
+    <main class="container mx-auto px-4">
+      <%- body %>
+    </main>
+    <script src="/js/flowbite.js"></script>
 </body>
 
 </html>

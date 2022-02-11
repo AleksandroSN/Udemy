@@ -1,17 +1,12 @@
-<%- include("../partials/head.ejs") %>
-
-  <body class="container mx-auto px-4">
-    <h2>Update Campground</h2>
-    <form action="/campgrounds/<%= _id %>?_method=PUT" method="POST" class="flex flex-wrap w-20 gap-y-1.5"
-      id="update_form">
-      <label for="title"> Title
-        <input class="form-input" type="text" name="title" id="title" value="<%= title %>">
-      </label>
-      <label for="location"> Location
-        <input class="form-input" type="text" name="location" id="location" value="<%= location %>">
-      </label>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT</button>
-    </form>
-  </body>
-
-  </html>
+<%- layout("layouts/boilerplate.ejs") %>
+  <h2>Update Campground</h2>
+  <form action="/campgrounds/<%= _id %>?_method=PUT" method="POST" class="flex flex-wrap w-20 gap-y-1.5"
+    id="update_form">
+    <label for="title"> Title
+      <input class="form-input" type="text" name="title" id="title" value="<%= title %>">
+    </label>
+    <label for="location"> Location
+      <input class="form-input" type="text" name="location" id="location" value="<%= location %>">
+    </label>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT</button>
+  </form>

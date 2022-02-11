@@ -1,15 +1,10 @@
-<%- include("../partials/head.ejs") %>
-
-  <body class="container mx-auto px-4">
-    <form action="/campgrounds" method="post" class="flex flex-wrap w-20 gap-y-1.5">
-      <label for="title"> Title
-        <input class="form-input" type="text" name="title" id="title">
-      </label>
-      <label for="location"> Location
-        <input class="form-input" type="text" name="location" id="location">
-      </label>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT</button>
-    </form>
-  </body>
-
-  </html>
+<%- layout("layouts/boilerplate.ejs") %>
+  <form action="/campgrounds" method="post" class="flex flex-wrap w-20 gap-y-1.5">
+    <label for="title"> Title
+      <input class="form-input" type="text" name="title" id="title">
+    </label>
+    <label for="location"> Location
+      <input class="form-input" type="text" name="location" id="location">
+    </label>
+    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">SUBMIT</button>
+  </form>

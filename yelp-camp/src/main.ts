@@ -4,6 +4,7 @@ import { NestExpressApplication } from "@nestjs/platform-express";
 import { Logger } from "@nestjs/common";
 import { AppModule } from "@modules";
 import * as methodOverride from "method-override";
+import * as ejsMate from "ejs-mate";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -12,6 +13,7 @@ async function bootstrap() {
 
   app.useStaticAssets(join(__dirname, "..", "public"));
   app.setBaseViewsDir(join(__dirname, "..", "views"));
+  app.engine("ejs", ejsMate);
   app.setViewEngine("ejs");
   app.use(methodOverride("_method"));
 

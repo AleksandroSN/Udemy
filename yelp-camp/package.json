@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@tailwindcss/forms": "^0.4.0",
     "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^6.2.1",
     "nestjs-command": "^3.1.1",

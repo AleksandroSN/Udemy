@@ -1,20 +1,5 @@
 <%- layout("layouts/boilerplate.ejs") %>
   <h2 class="text-2xl font-bold underline">Test page for campground</h2>
-  <a href="/campgrounds/<%= _id %>/edit">Edit</a>
-  <p>
-    <%= title %>
-  </p>
-  <img src="<%= image %>" alt="">
-  <p>
-    <%= price %>
-  </p>
-  <p>
-    <%= description %>
-  </p>
-  <p>
-    <%= location %>
-  </p>
-  <a href="./" class="text-lg font-bold">BACK</a>
-  <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">DELETE</button>
-  </form>
+  <section>
+    <%- include("../partials/camp_card_detail") %>
+  </section>

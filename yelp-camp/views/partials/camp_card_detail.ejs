@@ -1,0 +1,28 @@
+<div class="flex items-center w-full px-4 py-10 bg-cover card bg-base-200"
+  style="background-image: url(&quot;https://picsum.photos/id/314/1000/300&quot;);">
+  <div class="card glass lg:card-side text-neutral-content">
+    <figure class="p-6">
+      <img src="<%= image %> " class="rounded-lg shadow-lg w-full aspect-square">
+    </figure>
+    <div class=" max-w-md card-body">
+      <h2 class="card-title">
+        <%= title %>
+      </h2>
+      <p>
+        <%= location %>
+      </p>
+      <p>
+        <%= description %>
+      </p>
+      <p>$<%= price %>
+      </p>
+      <div class="card-actions mt-auto">
+        <a href="/campgrounds/<%= _id %>/edit" class="btn glass rounded-full">Edit</a>
+        <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
+          <button type="submit" class="btn glass rounded-full">Delete</button>
+        </form>
+      </div>
+      <a href="/campgrounds" class="btn glass rounded-full">Back to All Campgrounds</a>
+    </div>
+  </div>
+</div>

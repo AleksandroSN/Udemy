@@ -12,6 +12,9 @@ export class Campground extends Document {
   @Prop({ unique: true })
   title: string;
 
+  @Prop()
+  image: string;
+
   @Prop({ type: Number, min: 0 })
   price: number;
 

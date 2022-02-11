@@ -40,15 +40,17 @@ export class CampgroundsController {
   @Get(":id")
   @Page("campground")
   async findOne(@Param("id", ParseUUIDPipe) id: string) {
-    const { location, description, title, price, _id } = await this.campgroundsService.findOne(id);
-    return { location, description, title, price, _id, docTitle: "One campground " };
+    const { location, description, title, price, image, _id } =
+      await this.campgroundsService.findOne(id);
+    return { location, description, title, price, image, _id, docTitle: "One campground " };
   }
 
   @Get(":id/edit")
   @Page("campground_update")
   async updateCamp(@Param("id", ParseUUIDPipe) id: string) {
-    const { location, description, title, price, _id } = await this.campgroundsService.findOne(id);
-    return { location, description, title, price, _id, docTitle: "update One campground " };
+    const { location, description, title, price, image, _id } =
+      await this.campgroundsService.findOne(id);
+    return { location, description, title, price, image, _id, docTitle: "update One campground " };
   }
 
   @Put(":id")

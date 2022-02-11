@@ -11,12 +11,13 @@
   <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body>
+<body class="flex flex-col h-screen">
   <%- include("../partials/navbar") %>
     <main class="container mx-auto px-4">
       <%- body %>
     </main>
-    <script src="/js/flowbite.js"></script>
+    <%- include("../partials/footer") %>
+      <script src="/js/flowbite.js"></script>
 </body>
 
 </html>

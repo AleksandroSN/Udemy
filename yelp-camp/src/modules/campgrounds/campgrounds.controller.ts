@@ -7,7 +7,7 @@ import {
   Param,
   Delete,
   ParseUUIDPipe,
-  Res,
+  Redirect,
 } from "@nestjs/common";
 import { Page } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
@@ -19,9 +19,10 @@ export class CampgroundsController {
   constructor(private readonly campgroundsService: CampgroundsService) {}
 
   @Post()
-  async create(@Body() createCampgroundDto: CreateCampgroundDto, @Res() res) {
-    const campground = await this.campgroundsService.create(createCampgroundDto);
-    res.redirect(`/campgrounds/${campground._id}`);
+  @Redirect()
+  async create(@Body() createCampgroundDto: CreateCampgroundDto) {
+    const { _id } = await this.campgroundsService.create(createCampgroundDto);
+    return { url: `/campgrounds/${_id}` };
   }
 
   @Get()
@@ -54,18 +55,18 @@ export class CampgroundsController {
   }
 
   @Put(":id")
+  @Redirect()
   async update(
     @Param("id", ParseUUIDPipe) id: string,
     @Body() updateCampgroundDto: UpdateCampgroundDto,
-    @Res() res,
   ) {
-    const updateCampGround = await this.campgroundsService.update(id, updateCampgroundDto);
-    res.redirect(`/campgrounds/${updateCampGround._id}`);
+    const { _id } = await this.campgroundsService.update(id, updateCampgroundDto);
+    return { url: `/campgrounds/${_id}` };
   }
 
   @Delete(":id")
-  async remove(@Param("id", ParseUUIDPipe) id: string, @Res() res) {
+  @Redirect("/campgrounds", 301)
+  async remove(@Param("id", ParseUUIDPipe) id: string) {
     await this.campgroundsService.remove(id);
-    res.redirect("/campgrounds");
   }
 }

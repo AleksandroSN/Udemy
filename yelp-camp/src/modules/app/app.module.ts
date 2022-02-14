@@ -1,9 +1,12 @@
+import { APP_FILTER } from "@nestjs/core";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
 import { MongooseConfigService } from "@configs";
 import { SeedModule } from "@modules/seeds";
 import { CampgroundsModule } from "@modules/campgrounds";
+import { NotFoundExceptionFilter } from "@exceptions/not_found_exception";
+import { BadRequestExceptionFilter } from "@exceptions/bad_request_exception";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
@@ -20,6 +23,16 @@ import { AppService } from "./app.service";
     CampgroundsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: NotFoundExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: BadRequestExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}

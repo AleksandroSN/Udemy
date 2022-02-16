@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, Redirect } from "@nestjs/common";
+import { Controller, Get, Post, Body, Put, Param, Delete, Redirect, Req } from "@nestjs/common";
 import { Page } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
@@ -10,8 +10,9 @@ export class CampgroundsController {
 
   @Post()
   @Redirect()
-  async create(@Body() createCampgroundDto: CreateCampgroundDto) {
+  async create(@Body() createCampgroundDto: CreateCampgroundDto, @Req() req) {
     const { _id } = await this.campgroundsService.create(createCampgroundDto);
+    req.flash("success", "Succesfully created new Camp");
     return { url: `/campgrounds/${_id}` };
   }
 
@@ -25,7 +26,9 @@ export class CampgroundsController {
   @Get("/new")
   @Page("campground_new")
   async addNew() {
-    return { docTitle: "add new campground" };
+    return {
+      docTitle: "add new campground",
+    };
   }
 
   @Get(":id")
@@ -55,8 +58,13 @@ export class CampgroundsController {
 
   @Put(":id")
   @Redirect()
-  async update(@Param("id") id: string, @Body() updateCampgroundDto: UpdateCampgroundDto) {
+  async update(
+    @Param("id") id: string,
+    @Body() updateCampgroundDto: UpdateCampgroundDto,
+    @Req() req,
+  ) {
     const { _id } = await this.campgroundsService.update(id, updateCampgroundDto);
+    req.flash("success", "Succesfully updated Camp");
     return { url: `/campgrounds/${_id}` };
   }
 

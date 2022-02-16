@@ -1,32 +1,25 @@
+import { CreateReviewDto, UpdateReviewDto } from "@modules/reviews/dto";
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import { Campground } from "@schemas/campground.schema";
+import { Review, ReviewDocument } from "@schemas/review.schema";
 import { Model } from "mongoose";
-import { CreateReviewDto } from "./dto/create-review.dto";
-import { UpdateReviewDto } from "./dto/update-review.dto";
-import { Review, ReviewDocument } from "./schemas/review.schema";
 
 @Injectable()
 export class ReviewRepository {
   constructor(@InjectModel(Review.name) private readonly reviewModel: Model<ReviewDocument>) {}
 
-  async create(createReviewDto: CreateReviewDto): Promise<Review> {
+  async create(createReviewDto: CreateReviewDto, campground: Campground): Promise<Review> {
     try {
       const review = new this.reviewModel(createReviewDto);
+      campground.reviews.push(review);
       const result = await review.save();
+      await campground.save();
       return result;
     } catch (error) {
       throw new BadRequestException(error);
     }
   }
-
-  // async seedData(createCampgroundDto: CreateReviewDto[]) {
-  //   try {
-  //     const campgrounds = await this.reviewModel.insertMany(createCampgroundDto);
-  //     return campgrounds;
-  //   } catch (error) {
-  //     throw new BadRequestException(error);
-  //   }
-  // }
 
   async findAll(): Promise<Review[]> {
     const allReviews = await this.reviewModel.find({});

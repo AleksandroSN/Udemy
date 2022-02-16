@@ -1,9 +1,8 @@
+import { CreateCampgroundDto, UpdateCampgroundDto } from "@modules/campgrounds/dto";
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
+import { Campground, CampgroundDocument } from "@schemas/campground.schema";
 import { Model } from "mongoose";
-import { CreateCampgroundDto } from "./dto/create-campground.dto";
-import { UpdateCampgroundDto } from "./dto/update-campground.dto";
-import { Campground, CampgroundDocument } from "./schemas/campground.schema";
 
 @Injectable()
 export class CampgroundRepository {
@@ -31,22 +30,19 @@ export class CampgroundRepository {
   }
 
   async findAll() {
-    const allCampgrounds = await this.campgroundModel.find({});
-    if (!allCampgrounds) {
-      throw new NotFoundException("", "Campground not found");
-    }
+    const allCampgrounds = await this.campgroundModel.find();
     return allCampgrounds;
   }
 
   async findOne(id: string) {
-    const campground = await this.campgroundModel.findById(id);
+    const campground = await this.campgroundModel.findById(id).populate("reviews");
     if (!campground) {
       throw new NotFoundException("", "Campground not found");
     }
     return campground;
   }
 
-  async update(id: string, updateCampgroundDto: UpdateCampgroundDto) {
+  async update(id: string, updateCampgroundDto: UpdateCampgroundDto | any) {
     const campground = await this.campgroundModel.findByIdAndUpdate(id, updateCampgroundDto);
     if (!campground) {
       throw new NotFoundException("", "Campground not found");

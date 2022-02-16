@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { v4 as uuid } from "uuid";
-import { Document } from "mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
+import { Review } from "./review.schema";
 
 export type CampgroundDocument = Campground & Document;
 
@@ -23,6 +24,9 @@ export class Campground extends Document {
 
   @Prop()
   location: string;
+
+  @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: Review.name }] })
+  reviews: Review[];
 }
 
 export const CampgroundSchema = SchemaFactory.createForClass(Campground);

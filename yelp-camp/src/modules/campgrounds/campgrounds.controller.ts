@@ -1,14 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  ParseUUIDPipe,
-  Redirect,
-} from "@nestjs/common";
+import { Controller, Get, Post, Body, Put, Param, Delete, Redirect } from "@nestjs/common";
 import { Page } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
@@ -40,15 +30,24 @@ export class CampgroundsController {
 
   @Get(":id")
   @Page("campground")
-  async findOne(@Param("id", ParseUUIDPipe) id: string) {
-    const { location, description, title, price, image, _id } =
+  async findOne(@Param("id") id: string) {
+    const { location, description, title, price, image, _id, reviews } =
       await this.campgroundsService.findOne(id);
-    return { location, description, title, price, image, _id, docTitle: "One campground " };
+    return {
+      location,
+      description,
+      title,
+      price,
+      image,
+      _id,
+      reviews,
+      docTitle: "One campground ",
+    };
   }
 
   @Get(":id/edit")
   @Page("campground_update")
-  async updateCamp(@Param("id", ParseUUIDPipe) id: string) {
+  async updateCamp(@Param("id") id: string) {
     const { location, description, title, price, image, _id } =
       await this.campgroundsService.findOne(id);
     return { location, description, title, price, image, _id, docTitle: "update One campground " };
@@ -56,17 +55,14 @@ export class CampgroundsController {
 
   @Put(":id")
   @Redirect()
-  async update(
-    @Param("id", ParseUUIDPipe) id: string,
-    @Body() updateCampgroundDto: UpdateCampgroundDto,
-  ) {
+  async update(@Param("id") id: string, @Body() updateCampgroundDto: UpdateCampgroundDto) {
     const { _id } = await this.campgroundsService.update(id, updateCampgroundDto);
     return { url: `/campgrounds/${_id}` };
   }
 
   @Delete(":id")
   @Redirect("/campgrounds", 301)
-  async remove(@Param("id", ParseUUIDPipe) id: string) {
+  async remove(@Param("id") id: string) {
     await this.campgroundsService.remove(id);
   }
 }

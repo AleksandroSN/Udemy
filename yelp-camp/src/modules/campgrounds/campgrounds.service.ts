@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { CampgroundRepository } from "./campgrounds.repository";
+import { CampgroundRepository } from "../../repositories/campgrounds.repository";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
 

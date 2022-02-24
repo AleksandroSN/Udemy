@@ -70,8 +70,9 @@
       </div>
       <button type="submit" class="btn glass rounded-full block">Submit</button>
     </form>
-    <div class="card glass lg:card-side text-neutral-content">
-      <% for (review of reviews) { %>
+    <!-- <div class="card glass lg:card-side text-neutral-content"> -->
+    <% for (review of reviews) { %>
+      <div class="card glass text-neutral-content gap-4 p-4 mb-4">
         <li>
           <%= review.body %>
         </li>
@@ -81,7 +82,8 @@
         <form action="/campgrounds/<%= _id %>/review/<%= review._id %>?_method=DELETE" method="POST">
           <button type="submit">DELETE</button>
         </form>
-        <% } %>
-    </div>
+      </div>
+      <% } %>
+        <!-- </div> -->
   </div>
 </div>

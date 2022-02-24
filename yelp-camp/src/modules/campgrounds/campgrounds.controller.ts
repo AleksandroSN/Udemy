@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Put, Param, Delete, Redirect, Req } from "@nestjs/common";
-import { Page } from "@shared";
+import { isLogged, Page } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
@@ -24,6 +24,7 @@ export class CampgroundsController {
   }
 
   @Get("/new")
+  @isLogged()
   @Page("campground_new")
   async addNew() {
     return {

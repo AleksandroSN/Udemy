@@ -7,6 +7,7 @@ import * as methodOverride from "method-override";
 import * as ejsMate from "ejs-mate";
 import * as session from "express-session";
 import * as flash from "connect-flash";
+import * as passport from "passport";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -29,8 +30,11 @@ async function bootstrap() {
       },
     }),
   );
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(flash());
   app.use((req, res, next) => {
+    res.locals.currentUser = req.user ?? undefined;
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();

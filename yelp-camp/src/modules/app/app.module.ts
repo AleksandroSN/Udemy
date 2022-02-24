@@ -6,8 +6,9 @@ import { MongooseConfigService } from "@configs";
 import { SeedModule } from "@modules/seeds";
 import { CampgroundsModule } from "@modules/campgrounds";
 import { ReviewsModule } from "@modules/reviews";
-import { NotFoundExceptionFilter } from "@exceptions/not_found_exception";
-import { BadRequestExceptionFilter } from "@exceptions/bad_request_exception";
+import { UsersModule } from "@modules/users";
+import { AuthModule } from "@modules/auth";
+import { NotFoundExceptionFilter, BadRequestExceptionFilter, AuthException } from "@exceptions";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
@@ -23,6 +24,8 @@ import { AppService } from "./app.service";
     SeedModule,
     CampgroundsModule,
     ReviewsModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
@@ -34,6 +37,10 @@ import { AppService } from "./app.service";
     {
       provide: APP_FILTER,
       useClass: BadRequestExceptionFilter,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: AuthException,
     },
     {
       provide: APP_PIPE,

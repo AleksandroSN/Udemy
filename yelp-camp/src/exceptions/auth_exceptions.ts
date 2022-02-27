@@ -6,7 +6,7 @@ import {
   HttpException,
   UnauthorizedException,
 } from "@nestjs/common";
-import { LOGIN_PAGE } from "@shared";
+import { LOGIN_PAGE, PATH_TO_ERROR_PAGE } from "@shared";
 
 @Catch(HttpException)
 export class AuthException implements ExceptionFilter {
@@ -18,6 +18,10 @@ export class AuthException implements ExceptionFilter {
     if (exception instanceof UnauthorizedException || exception instanceof ForbiddenException) {
       request.flash("error", "Please login or register");
       response.redirect(LOGIN_PAGE);
+    } else {
+      response
+        .status(400)
+        .render(PATH_TO_ERROR_PAGE, { error: JSON.stringify(exception.getResponse()) });
     }
   }
 }

@@ -79,14 +79,19 @@
     <% for (review of reviews) { %>
       <div class="card glass text-neutral-content gap-4 p-4 mb-4">
         <li>
+          <%= review.author.username %>
+        </li>
+        <li>
           <%= review.body %>
         </li>
         <li>
           <%= review.rating %>
         </li>
-        <form action="/campgrounds/<%= _id %>/review/<%= review._id %>?_method=DELETE" method="POST">
-          <button type="submit">DELETE</button>
-        </form>
+        <% if (currentUser && currentUser.user.username===review.author.username) { %>
+          <form action="/campgrounds/<%= _id %>/review/<%= review._id %>?_method=DELETE" method="POST">
+            <button type="submit">DELETE</button>
+          </form>
+          <% } %>
       </div>
       <% } %>
         <!-- </div> -->

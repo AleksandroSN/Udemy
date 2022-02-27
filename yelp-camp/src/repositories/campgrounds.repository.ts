@@ -38,7 +38,10 @@ export class CampgroundRepository {
   async findOne(id: string) {
     const campground = await this.campgroundModel
       .findById(id)
-      .populate("reviews")
+      .populate({
+        path: "reviews",
+        populate: "author",
+      })
       .populate("author");
     if (!campground) {
       throw new NotFoundException("", "Campground not found");

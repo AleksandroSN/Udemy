@@ -3,15 +3,20 @@ import { BadRequestException, Injectable, NotFoundException } from "@nestjs/comm
 import { InjectModel } from "@nestjs/mongoose";
 import { Campground } from "@schemas/campground.schema";
 import { Review, ReviewDocument } from "@schemas/review.schema";
+import { User } from "@schemas/user.schema";
 import { Model } from "mongoose";
 
 @Injectable()
 export class ReviewRepository {
   constructor(@InjectModel(Review.name) private readonly reviewModel: Model<ReviewDocument>) {}
 
-  async create(createReviewDto: CreateReviewDto, campground: Campground): Promise<Review> {
+  async create(
+    createReviewDto: CreateReviewDto,
+    campground: Campground,
+    author: User,
+  ): Promise<Review> {
     try {
-      const review = new this.reviewModel(createReviewDto);
+      const review = new this.reviewModel({ ...createReviewDto, author });
       campground.reviews.push(review);
       const result = await review.save();
       await campground.save();

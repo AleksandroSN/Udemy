@@ -1,15 +1,5 @@
-import {
-  Controller,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Redirect,
-  UseInterceptors,
-  Get,
-} from "@nestjs/common";
-import { isLogged, ReqUserDTO, User } from "@shared";
-import { AuthorInterceptor } from "@interceptors";
+import { Controller, Post, Body, Param, Delete, Redirect, Get } from "@nestjs/common";
+import { isAuthor, isLogged, ReqUserDTO, User } from "@shared";
 import { ReviewsService } from "./reviews.service";
 import { CreateReviewDto } from "./dto/create-review.dto";
 // import { UpdateReviewDto } from "./dto/update-review.dto";
@@ -43,7 +33,7 @@ export class ReviewsController {
 
   @Delete(":id")
   @isLogged()
-  @UseInterceptors(AuthorInterceptor)
+  @isAuthor()
   @Redirect()
   async remove(@Param("id") id: string, @Param("campId") campId: string) {
     await this.reviewsService.remove(id, campId);

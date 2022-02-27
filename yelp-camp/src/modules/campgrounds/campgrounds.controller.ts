@@ -1,17 +1,5 @@
-import { AuthorInterceptor } from "@interceptors";
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Put,
-  Param,
-  Delete,
-  Redirect,
-  Req,
-  UseInterceptors,
-} from "@nestjs/common";
-import { isLogged, Page, ReqUserDTO, User } from "@shared";
+import { Controller, Get, Post, Body, Put, Param, Delete, Redirect, Req } from "@nestjs/common";
+import { isAuthor, isLogged, Page, ReqUserDTO, User } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
@@ -22,7 +10,7 @@ export class CampgroundsController {
 
   @Post()
   @isLogged()
-  @UseInterceptors(AuthorInterceptor)
+  @isAuthor()
   @Redirect()
   async create(
     @Body() createCampgroundDto: CreateCampgroundDto,
@@ -70,7 +58,7 @@ export class CampgroundsController {
 
   @Get(":id/edit")
   @isLogged()
-  @UseInterceptors(AuthorInterceptor)
+  @isAuthor()
   @Page("campground_update")
   async updateCamp(@Param("id") id: string) {
     const { location, description, title, price, image, _id, author } =
@@ -89,7 +77,7 @@ export class CampgroundsController {
 
   @Put(":id")
   @isLogged()
-  @UseInterceptors(AuthorInterceptor)
+  @isAuthor()
   @Redirect()
   async update(
     @Param("id") id: string,
@@ -103,7 +91,7 @@ export class CampgroundsController {
 
   @Delete(":id")
   @isLogged()
-  @UseInterceptors(AuthorInterceptor)
+  @isAuthor()
   @Redirect("/campgrounds", 301)
   async remove(@Param("id") id: string) {
     await this.campgroundsService.remove(id);

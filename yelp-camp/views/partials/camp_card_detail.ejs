@@ -9,7 +9,7 @@
         Campground title: <%= title %>
       </h2>
       <h2 class="card-title">
-        Author: <%= username %>
+        Author: <%= author.username %>
       </h2>
       <h2>
         Location: <%= location %>
@@ -19,13 +19,15 @@
       <p>
         <%= description %>
       </p>
-      <div class="card-actions mt-auto">
-        <a href="/campgrounds/<%= _id %>/edit" class="btn glass rounded-full">Edit</a>
-        <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
-          <button type="submit" class="btn glass rounded-full">Delete</button>
-        </form>
-      </div>
-      <a href="/campgrounds" class="btn glass rounded-full">Back to All Campgrounds</a>
+      <% if (currentUser && currentUser.user.username===author.username) { %>
+        <div class="card-actions mt-auto">
+          <a href="/campgrounds/<%= _id %>/edit" class="btn glass rounded-full">Edit</a>
+          <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
+            <button type="submit" class="btn glass rounded-full">Delete</button>
+          </form>
+        </div>
+        <% } %>
+          <a href="/campgrounds" class="btn glass rounded-full">Back to All Campgrounds</a>
     </div>
   </div>
   <div class="w-full">

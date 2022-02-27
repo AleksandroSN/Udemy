@@ -8,7 +8,12 @@ import { CampgroundsModule } from "@modules/campgrounds";
 import { ReviewsModule } from "@modules/reviews";
 import { UsersModule } from "@modules/users";
 import { AuthModule } from "@modules/auth";
-import { NotFoundExceptionFilter, BadRequestExceptionFilter, AuthException } from "@exceptions";
+import {
+  NotFoundExceptionFilter,
+  BadRequestExceptionFilter,
+  AuthException,
+  RedirectFilter,
+} from "@exceptions";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
@@ -41,6 +46,10 @@ import { AppService } from "./app.service";
     {
       provide: APP_FILTER,
       useClass: AuthException,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: RedirectFilter,
     },
     {
       provide: APP_PIPE,

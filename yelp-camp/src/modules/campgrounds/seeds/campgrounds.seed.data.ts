@@ -8,6 +8,7 @@ export const seedData: CreateCampgroundDto[] = [
     description: "My First bootcamp",
     location: "Los Angeles",
     reviews: [],
+    author: "6213ae657a735e659a71eb1a",
   },
   {
     title: "Second",
@@ -16,6 +17,7 @@ export const seedData: CreateCampgroundDto[] = [
     description: "My Second bootcamp",
     location: "Ilinois",
     reviews: [],
+    author: "6213ae657a735e659a71eb1a",
   },
   {
     title: "Third",
@@ -24,6 +26,7 @@ export const seedData: CreateCampgroundDto[] = [
     description: "My Third bootcamp",
     location: "New York",
     reviews: [],
+    author: "6213ae657a735e659a71eb1a",
   },
   {
     title: "Fourth",
@@ -32,6 +35,7 @@ export const seedData: CreateCampgroundDto[] = [
     description: "My Fourth bootcamp",
     location: "Paris",
     reviews: [],
+    author: "6213ae657a735e659a71eb1a",
   },
   {
     title: "Fifth",
@@ -40,5 +44,6 @@ export const seedData: CreateCampgroundDto[] = [
     description: "My Fifth bootcamp",
     location: "Pekin",
     reviews: [],
+    author: "6213ae657a735e659a71eb1a",
   },
 ];

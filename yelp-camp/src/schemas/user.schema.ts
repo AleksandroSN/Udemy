@@ -6,6 +6,9 @@ export type UserDocument = User & PassportLocalDocument;
 export class User extends Document {
   @Prop({ type: String, required: true, unique: true })
   email: string;
+
+  @Prop({ type: String, required: true, unique: true })
+  username: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

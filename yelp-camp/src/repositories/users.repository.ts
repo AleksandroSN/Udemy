@@ -19,6 +19,11 @@ export class UsersRepository {
     return newUser;
   }
 
+  async findOne(id: string) {
+    const user = await this.userModel.findById(id);
+    return user;
+  }
+
   async serialize() {
     return this.userModel.serializeUser();
   }

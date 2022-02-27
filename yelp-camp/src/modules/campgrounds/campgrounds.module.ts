@@ -1,12 +1,16 @@
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Campground, CampgroundSchema } from "@schemas/campground.schema";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
+import { UsersModule } from "@modules/users";
 import { CampgroundsService } from "./campgrounds.service";
 import { CampgroundsController } from "./campgrounds.controller";
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: Campground.name, schema: CampgroundSchema }])],
+  imports: [
+    MongooseModule.forFeature([{ name: Campground.name, schema: CampgroundSchema }]),
+    forwardRef(() => UsersModule),
+  ],
   controllers: [CampgroundsController],
   providers: [CampgroundsService, CampgroundRepository],
   exports: [CampgroundsService, CampgroundRepository],

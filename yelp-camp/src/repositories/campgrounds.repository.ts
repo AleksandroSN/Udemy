@@ -2,6 +2,7 @@ import { CreateCampgroundDto, UpdateCampgroundDto } from "@modules/campgrounds/d
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Campground, CampgroundDocument } from "@schemas/campground.schema";
+import { User } from "@schemas/user.schema";
 import { Model } from "mongoose";
 
 @Injectable()
@@ -10,9 +11,9 @@ export class CampgroundRepository {
     @InjectModel(Campground.name) private readonly campgroundModel: Model<CampgroundDocument>,
   ) {}
 
-  async create(createCampgroundDto: CreateCampgroundDto) {
+  async create(createCampgroundDto: CreateCampgroundDto, author: User) {
     try {
-      const campground = new this.campgroundModel(createCampgroundDto);
+      const campground = new this.campgroundModel({ ...createCampgroundDto, author });
       const result = await campground.save();
       return result;
     } catch (error) {
@@ -35,7 +36,10 @@ export class CampgroundRepository {
   }
 
   async findOne(id: string) {
-    const campground = await this.campgroundModel.findById(id).populate("reviews");
+    const campground = await this.campgroundModel
+      .findById(id)
+      .populate("reviews")
+      .populate("author");
     if (!campground) {
       throw new NotFoundException("", "Campground not found");
     }

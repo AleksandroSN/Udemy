@@ -22,4 +22,6 @@ export class CreateCampgroundDto {
   location: string;
 
   reviews: string[];
+
+  author: string;
 }

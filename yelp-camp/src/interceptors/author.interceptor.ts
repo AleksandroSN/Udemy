@@ -9,13 +9,13 @@ export class AuthorInterceptor implements NestInterceptor {
 
   async intercept(context: ExecutionContext, next: CallHandler<any>): Promise<Observable<any>> {
     const request = context.switchToHttp().getRequest();
-    const { id } = request.params;
+    const { campId } = request.params;
     const { user } = request.user;
-    const campground = await this.campgroundRepository.findOne(id);
+    const campground = await this.campgroundRepository.findOne(campId);
 
     if (!campground.author.equals(user._id)) {
       request.flash("error", "You don't have permissions");
-      throw new RedirectError(302, `/campgrounds/${id}`);
+      throw new RedirectError(302, `/campgrounds/${campId}`);
     }
 
     return next.handle();

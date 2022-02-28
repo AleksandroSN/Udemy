@@ -6,3 +6,5 @@ export const LOCAL_STRATEGY = "local";
 export const LOGIN_PAGE = "/login";
 export const CAMPGROUNDS_PAGE = "/campgrounds";
 export const REGISTER_PAGE = "/register";
+export const CLOUDINARY = "Cloudinary";
+export const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "svg", "bmp", "webp"];

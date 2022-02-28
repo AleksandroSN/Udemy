@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
+import { CloudinaryService } from "@modules/cloudinary";
 import { UsersRepository } from "@repositories/users.repository";
-import { ReqUserDTO } from "@shared";
+import { CampgroundImagesDTO, ReqUserDTO } from "@shared";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
@@ -10,11 +11,27 @@ export class CampgroundsService {
   constructor(
     private readonly campgroundRepository: CampgroundRepository,
     private readonly userRepository: UsersRepository,
+    private readonly cloudinaryService: CloudinaryService,
   ) {}
 
-  async create(createCampgroundDto: CreateCampgroundDto, reqUser: ReqUserDTO) {
+  async create(
+    createCampgroundDto: CreateCampgroundDto,
+    reqUser: ReqUserDTO,
+    files: Express.Multer.File[],
+  ) {
+    const urls = files.map((file) => this.cloudinaryService.uploadImage(file, "YelpCamp"));
+    const result = await Promise.all(urls);
+    const campImages: CampgroundImagesDTO[] = result.map((response) => ({
+      url: response.secure_url,
+      path: response.public_id,
+    }));
     const author = await this.userRepository.findOne(reqUser._id);
-    return this.campgroundRepository.create(createCampgroundDto, author);
+    const campground = await this.campgroundRepository.create(
+      createCampgroundDto,
+      author,
+      campImages,
+    );
+    return campground;
   }
 
   async findAll() {

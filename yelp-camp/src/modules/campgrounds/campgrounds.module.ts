@@ -3,6 +3,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { MulterModule } from "@nestjs/platform-express";
 import { Campground, CampgroundSchema } from "@schemas/campground.schema";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
+import { CloudinaryModule } from "@modules/cloudinary";
 import { UsersModule } from "@modules/users";
 import { memoryStorage } from "multer";
 import { CampgroundsService } from "./campgrounds.service";
@@ -15,6 +16,7 @@ import { CampgroundsController } from "./campgrounds.controller";
     }),
     MongooseModule.forFeature([{ name: Campground.name, schema: CampgroundSchema }]),
     forwardRef(() => UsersModule),
+    forwardRef(() => CloudinaryModule),
   ],
   controllers: [CampgroundsController],
   providers: [CampgroundsService, CampgroundRepository],

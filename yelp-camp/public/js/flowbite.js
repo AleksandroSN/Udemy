@@ -1,20 +1,20 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 858:
+/***/ 366:
 /***/ (() => {
 
-const hideAllOtherAccordionHeaderElements = (accordionHeaderElements, currentAccordionHeaderEl, activeClassesArray, inactiveClassesArray) => {
-  accordionHeaderElements.forEach(headerEl => {
+var hideAllOtherAccordionHeaderElements = function hideAllOtherAccordionHeaderElements(accordionHeaderElements, currentAccordionHeaderEl, activeClassesArray, inactiveClassesArray) {
+  accordionHeaderElements.forEach(function (headerEl) {
     if (currentAccordionHeaderEl !== headerEl) {
-      const bodyEl = document.querySelector(headerEl.getAttribute('data-accordion-target'));
+      var bodyEl = document.querySelector(headerEl.getAttribute('data-accordion-target'));
       headerEl.setAttribute('aria-expanded', false); // active classes
 
-      activeClassesArray.map(c => {
+      activeClassesArray.map(function (c) {
         headerEl.classList.remove(c);
       }); // inactive classes
 
-      inactiveClassesArray.map(c => {
+      inactiveClassesArray.map(function (c) {
         headerEl.classList.add(c);
       });
       bodyEl.classList.add('hidden');
@@ -26,20 +26,20 @@ const hideAllOtherAccordionHeaderElements = (accordionHeaderElements, currentAcc
   });
 };
 
-const rotateAccordionIcon = accordionHeaderEl => {
+var rotateAccordionIcon = function rotateAccordionIcon(accordionHeaderEl) {
   if (accordionHeaderEl.querySelector('[data-accordion-icon]')) {
     accordionHeaderEl.querySelector('[data-accordion-icon]').classList.toggle('rotate-180');
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-accordion]').forEach(function (accordionEl) {
-    const accordionId = accordionEl.getAttribute('id');
-    const collapseAccordion = accordionEl.getAttribute('data-accordion');
-    const accordionHeaderElements = document.querySelectorAll('#' + accordionId + ' [data-accordion-target]');
-    const activeClasses = accordionEl.getAttribute('data-active-classes');
-    const inactiveClasses = accordionEl.getAttribute('data-inactive-classes');
-    let activeClassesArray = null;
+    var accordionId = accordionEl.getAttribute('id');
+    var collapseAccordion = accordionEl.getAttribute('data-accordion');
+    var accordionHeaderElements = document.querySelectorAll('#' + accordionId + ' [data-accordion-target]');
+    var activeClasses = accordionEl.getAttribute('data-active-classes');
+    var inactiveClasses = accordionEl.getAttribute('data-inactive-classes');
+    var activeClassesArray = null;
 
     if (activeClasses && activeClasses !== '') {
       activeClassesArray = activeClasses.split(" ");
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       activeClassesArray = ['bg-gray-100', 'dark:bg-gray-800', 'text-gray-900', 'dark:text-white'];
     }
 
-    let inactiveClassesArray = null;
+    var inactiveClassesArray = null;
 
     if (inactiveClasses && inactiveClasses !== '') {
       inactiveClassesArray = inactiveClasses.split(" ");
@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
       inactiveClassesArray = ['text-gray-500', 'dark:text-gray-400'];
     }
 
-    accordionHeaderElements.forEach(accordionHeaderEl => {
-      const accordionBodyEl = document.querySelector(accordionHeaderEl.getAttribute('data-accordion-target'));
-      accordionHeaderEl.addEventListener('click', () => {
+    accordionHeaderElements.forEach(function (accordionHeaderEl) {
+      var accordionBodyEl = document.querySelector(accordionHeaderEl.getAttribute('data-accordion-target'));
+      accordionHeaderEl.addEventListener('click', function () {
         if (collapseAccordion === 'collapse') {
           hideAllOtherAccordionHeaderElements(accordionHeaderElements, accordionHeaderEl, activeClassesArray, inactiveClassesArray);
         }
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (accordionHeaderEl.getAttribute('aria-expanded') === 'true') {
           accordionHeaderEl.setAttribute('aria-expanded', false); // active classes
 
-          activeClassesArray.map(c => {
+          activeClassesArray.map(function (c) {
             accordionHeaderEl.classList.remove(c);
           }); // inactive classes
 
-          inactiveClassesArray.map(c => {
+          inactiveClassesArray.map(function (c) {
             accordionHeaderEl.classList.add(c);
           });
           accordionBodyEl.classList.add('hidden');
@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           accordionHeaderEl.setAttribute('aria-expanded', true); // active classes
 
-          activeClassesArray.map(c => {
+          activeClassesArray.map(function (c) {
             accordionHeaderEl.classList.add(c);
           }); // inactive classes
 
-          inactiveClassesArray.map(c => {
+          inactiveClassesArray.map(function (c) {
             accordionHeaderEl.classList.remove(c);
           });
           accordionBodyEl.classList.remove('hidden');
@@ -96,11 +96,273 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /***/ }),
 
-/***/ 745:
+/***/ 791:
 /***/ (() => {
 
-const toggleCollapse = (elementId, show = true) => {
-  const collapseEl = document.getElementById(elementId);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('[data-carousel]').forEach(function (carouselEl) {
+    var interval = carouselEl.getAttribute('data-carousel-interval');
+    var slide = carouselEl.getAttribute('data-carousel') === 'slide' ? true : false;
+    var carousel = new Carousel(carouselEl.getAttribute('id'), {
+      interval: interval
+    });
+
+    if (slide) {
+      carousel.cycle();
+    } // check for controls
+
+
+    var carouselNextEl = carouselEl.querySelector('[data-carousel-next]');
+    var carouselPrevEl = carouselEl.querySelector('[data-carousel-prev]');
+
+    if (carouselNextEl) {
+      carouselNextEl.addEventListener('click', function () {
+        carousel.nextSlide();
+      });
+    }
+
+    if (carouselPrevEl) {
+      carouselPrevEl.addEventListener('click', function () {
+        carousel.prevSlide();
+      });
+    } // check for indicators
+
+
+    carouselEl.querySelectorAll('[data-carousel-slide-to]').forEach(function (slideToEl) {
+      slideToEl.addEventListener('click', function () {
+        var id = slideToEl.getAttribute('data-carousel-slide-to');
+        carousel.slideTo(id);
+      });
+    });
+  });
+});
+var Default = {
+  interval: 3000
+};
+
+var Carousel = /*#__PURE__*/function () {
+  function Carousel(id, options) {
+    _classCallCheck(this, Carousel);
+
+    this._el = document.getElementById(id);
+    this._items = _toConsumableArray(this._el.querySelectorAll('[data-carousel-item]')).length ? _toConsumableArray(this._el.querySelectorAll('[data-carousel-item]')).map(function (el, id) {
+      return {
+        id: id,
+        el: el,
+        active: el.getAttribute(['data-carousel-item']) === 'active' ? true : false
+      };
+    }) : [];
+    this._indicators = _toConsumableArray(this._el.querySelectorAll('[data-carousel-slide-to]')).length ? _toConsumableArray(this._el.querySelectorAll('[data-carousel-slide-to]')).map(function (el, id) {
+      return {
+        id: id,
+        el: el
+      };
+    }) : [];
+    this._interval = null;
+    this._intervalDuration = options.interval ? options.interval : Default.interval;
+
+    this._init();
+  }
+  /**
+   * Initialise carousel and items based on active one
+   */
+
+
+  _createClass(Carousel, [{
+    key: "_init",
+    value: function _init() {
+      var activeItem = this._getActiveItem();
+
+      this._items.map(function (item) {
+        item.el.classList.add('absolute', 'inset-0', 'transition-all', 'transform');
+      });
+
+      this.slideTo(activeItem.id);
+    }
+    /**
+     * Slide to the element based on id
+     * @param {*} id 
+     */
+
+  }, {
+    key: "slideTo",
+    value: function slideTo(id) {
+      var nextItem = this._items[id];
+      var rotationItems = {
+        'left': nextItem.id === 0 ? this._items[this._items.length - 1] : this._items[nextItem.id - 1],
+        'middle': nextItem,
+        'right': nextItem.id === this._items.length - 1 ? this._items[0] : this._items[nextItem.id + 1]
+      };
+
+      this._rotate(rotationItems);
+
+      this._setActiveItem(nextItem.id);
+
+      if (this._interval) {
+        this.pause();
+        this.cycle();
+      }
+    }
+    /**
+     * Based on the currently active item it will go to the next position
+     */
+
+  }, {
+    key: "nextSlide",
+    value: function nextSlide() {
+      var activeItem = this._getActiveItem();
+
+      var nextItem = null; // check if last item
+
+      if (activeItem.id === this._items.length - 1) {
+        nextItem = this._items[0];
+      } else {
+        nextItem = this._items[activeItem.id + 1];
+      }
+
+      this.slideTo(nextItem.id);
+    }
+    /**
+     * Based on the currently active item it will go to the previous position
+     */
+
+  }, {
+    key: "prevSlide",
+    value: function prevSlide() {
+      var activeItem = this._getActiveItem();
+
+      var prevItem = null; // check if first item
+
+      if (activeItem.id === 0) {
+        prevItem = this._items[this._items.length - 1];
+      } else {
+        prevItem = this._items[activeItem.id - 1];
+      }
+
+      this.slideTo(prevItem.id);
+    }
+    /**
+     * This method applies the transform classes based on the left, middle, and right rotation carousel items
+     * @param {*} rotationItems 
+     */
+
+  }, {
+    key: "_rotate",
+    value: function _rotate(rotationItems) {
+      // reset
+      this._items.map(function (item) {
+        item.el.classList.add('hidden');
+      }); // left item (previously active)
+
+
+      rotationItems.left.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden');
+      rotationItems.left.el.classList.add('-translate-x-full'); // currently active item
+
+      rotationItems.middle.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden');
+      rotationItems.middle.el.classList.add('translate-x-0'); // right item (upcoming active)
+
+      rotationItems.right.el.classList.remove('-translate-x-full', 'translate-x-full', 'translate-x-0', 'hidden');
+      rotationItems.right.el.classList.add('translate-x-full');
+    }
+    /**
+     * Set an interval to cycle through the carousel items
+     */
+
+  }, {
+    key: "cycle",
+    value: function cycle(intervalDuration) {
+      var _this = this;
+
+      if (intervalDuration) {
+        this._intervalDuration = intervalDuration;
+      }
+
+      this._interval = setInterval(function () {
+        _this.nextSlide();
+      }, this._intervalDuration);
+    }
+    /**
+     * Clears the cycling interval
+     */
+
+  }, {
+    key: "pause",
+    value: function pause() {
+      clearInterval(this._interval);
+    }
+    /**
+     * Get the currently active item
+     */
+
+  }, {
+    key: "_getActiveItem",
+    value: function _getActiveItem() {
+      return this._items.filter(function (item) {
+        return item.active;
+      })[0];
+    }
+    /**
+     * Set the currently active item and data attribute
+     * @param {*} id 
+     */
+
+  }, {
+    key: "_setActiveItem",
+    value: function _setActiveItem(id) {
+      this._items.map(function (item) {
+        item.active = false;
+        item.el.setAttribute('data-carousel-item', '');
+
+        if (item.id === id) {
+          item.active = true;
+          item.el.setAttribute('data-carousel-item', 'active');
+        }
+      }); // update the indicators if available
+
+
+      this._indicators.map(function (indicator) {
+        indicator.el.setAttribute('aria-current', 'false');
+        indicator.el.classList.remove('bg-white', 'dark:bg-gray-800');
+        indicator.el.classList.add('bg-white/50', 'dark:bg-gray-800/50');
+
+        if (indicator.id === id) {
+          indicator.el.classList.add('bg-white', 'dark:bg-gray-800');
+          indicator.el.classList.remove('bg-white/50', 'dark:bg-gray-800/50');
+          indicator.el.setAttribute('aria-current', 'true');
+        }
+      });
+    }
+  }]);
+
+  return Carousel;
+}();
+
+/***/ }),
+
+/***/ 540:
+/***/ (() => {
+
+var toggleCollapse = function toggleCollapse(elementId) {
+  var show = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var collapseEl = document.getElementById(elementId);
 
   if (show) {
     collapseEl.classList.remove('hidden');
@@ -109,7 +371,7 @@ const toggleCollapse = (elementId, show = true) => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   // Toggle target elements using [data-collapse-toggle]
   document.querySelectorAll('[data-collapse-toggle]').forEach(function (collapseToggleEl) {
     var collapseId = collapseToggleEl.getAttribute('data-collapse-toggle');
@@ -122,11 +384,12 @@ window.toggleCollapse = toggleCollapse;
 
 /***/ }),
 
-/***/ 508:
+/***/ 84:
 /***/ (() => {
 
-const toggleModal = (modalId, show = true) => {
-  const modalEl = document.getElementById(modalId);
+var toggleModal = function toggleModal(modalId) {
+  var show = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+  var modalEl = document.getElementById(modalId);
 
   if (show) {
     modalEl.classList.add('flex');
@@ -150,7 +413,7 @@ const toggleModal = (modalId, show = true) => {
 };
 
 window.toggleModal = toggleModal;
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-modal-toggle]').forEach(function (modalToggleEl) {
     var modalId = modalToggleEl.getAttribute('data-modal-toggle');
     var modalEl = document.getElementById(modalId);
@@ -169,13 +432,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /***/ }),
 
-/***/ 454:
+/***/ 97:
 /***/ (() => {
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-tabs-toggle]').forEach(function (tabsToggleEl) {
-    const tabsToggleElementsId = tabsToggleEl.getAttribute('id');
-    const tabsToggleElements = document.querySelectorAll('#' + tabsToggleElementsId + ' [role="tab"]');
+    var tabsToggleElementsId = tabsToggleEl.getAttribute('id');
+    var tabsToggleElements = document.querySelectorAll('#' + tabsToggleElementsId + ' [role="tab"]');
     var activeTabToggleEl = null;
     var activeTabContentEl = null;
     tabsToggleElements.forEach(function (tabToggleEl) {
@@ -243,9 +506,11 @@ var __webpack_exports__ = {};
 "use strict";
 
 // EXTERNAL MODULE: ./src/components/accordion.js
-var accordion = __webpack_require__(858);
+var accordion = __webpack_require__(366);
 // EXTERNAL MODULE: ./src/components/collapse.js
-var collapse = __webpack_require__(745);
+var collapse = __webpack_require__(540);
+// EXTERNAL MODULE: ./src/components/carousel.js
+var carousel = __webpack_require__(791);
 ;// CONCATENATED MODULE: ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js
 function getWindow(node) {
   if (node == null) {
@@ -2208,13 +2473,13 @@ var popper_createPopper = /*#__PURE__*/popperGenerator({
 
 ;// CONCATENATED MODULE: ./src/components/dropdown.js
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   // Toggle dropdown elements using [data-dropdown-toggle]
   document.querySelectorAll('[data-dropdown-toggle]').forEach(function (dropdownToggleEl) {
-    const dropdownMenuId = dropdownToggleEl.getAttribute('data-dropdown-toggle');
-    const dropdownMenuEl = document.getElementById(dropdownMenuId); // options
+    var dropdownMenuId = dropdownToggleEl.getAttribute('data-dropdown-toggle');
+    var dropdownMenuEl = document.getElementById(dropdownMenuId); // options
 
-    const placement = dropdownToggleEl.getAttribute('data-dropdown-placement');
+    var placement = dropdownToggleEl.getAttribute('data-dropdown-placement');
     dropdownToggleEl.addEventListener('click', function (event) {
       var element = event.target;
 
@@ -2251,18 +2516,36 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 // EXTERNAL MODULE: ./src/components/tabs.js
-var tabs = __webpack_require__(454);
+var tabs = __webpack_require__(97);
 // EXTERNAL MODULE: ./src/components/modal.js
-var modal = __webpack_require__(508);
+var modal = __webpack_require__(84);
 ;// CONCATENATED MODULE: ./src/components/tooltip.js
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-document.addEventListener('DOMContentLoaded', () => {
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+document.addEventListener('DOMContentLoaded', function () {
   // Toggle dropdown elements using [data-dropdown-toggle]
   document.querySelectorAll('[data-tooltip-target]').forEach(function (tooltipToggleEl) {
-    const tooltipEl = document.getElementById(tooltipToggleEl.getAttribute('data-tooltip-target'));
-    const placement = tooltipToggleEl.getAttribute('data-tooltip-placement');
-    const trigger = tooltipToggleEl.getAttribute('data-tooltip-trigger');
-    const popperInstance = popper_createPopper(tooltipToggleEl, tooltipEl, {
+    var tooltipEl = document.getElementById(tooltipToggleEl.getAttribute('data-tooltip-target'));
+    var placement = tooltipToggleEl.getAttribute('data-tooltip-placement');
+    var trigger = tooltipToggleEl.getAttribute('data-tooltip-trigger');
+    var popperInstance = popper_createPopper(tooltipToggleEl, tooltipEl, {
       placement: placement ? placement : 'top',
       modifiers: [{
         name: 'offset',
@@ -2279,12 +2562,14 @@ document.addEventListener('DOMContentLoaded', () => {
       tooltipEl.classList.remove('invisible');
       tooltipEl.classList.add('visible'); // Enable the event listeners
 
-      popperInstance.setOptions(options => ({ ...options,
-        modifiers: [...options.modifiers, {
-          name: 'eventListeners',
-          enabled: true
-        }]
-      })); // Update its position
+      popperInstance.setOptions(function (options) {
+        return _objectSpread(_objectSpread({}, options), {}, {
+          modifiers: [].concat(_toConsumableArray(options.modifiers), [{
+            name: 'eventListeners',
+            enabled: true
+          }])
+        });
+      }); // Update its position
 
       popperInstance.update();
     }
@@ -2296,12 +2581,14 @@ document.addEventListener('DOMContentLoaded', () => {
       tooltipEl.classList.remove('visible');
       tooltipEl.classList.add('invisible'); // Disable the event listeners
 
-      popperInstance.setOptions(options => ({ ...options,
-        modifiers: [...options.modifiers, {
-          name: 'eventListeners',
-          enabled: false
-        }]
-      }));
+      popperInstance.setOptions(function (options) {
+        return _objectSpread(_objectSpread({}, options), {}, {
+          modifiers: [].concat(_toConsumableArray(options.modifiers), [{
+            name: 'eventListeners',
+            enabled: false
+          }])
+        });
+      });
     }
 
     var showEvents = [];
@@ -2323,16 +2610,17 @@ document.addEventListener('DOMContentLoaded', () => {
         hideEvents = ['mouseleave', 'blur'];
     }
 
-    showEvents.forEach(event => {
+    showEvents.forEach(function (event) {
       tooltipToggleEl.addEventListener(event, show);
     });
-    hideEvents.forEach(event => {
+    hideEvents.forEach(function (event) {
       tooltipToggleEl.addEventListener(event, hide);
     });
   });
 });
 ;// CONCATENATED MODULE: ./src/flowbite.js
  // core components
+
 
 
 

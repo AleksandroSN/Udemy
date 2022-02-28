@@ -14,7 +14,6 @@ import { isAuthor, isLogged, Page, ReqUserDTO, Uploader, User } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
-// import {} from "clou"
 
 @Controller("campgrounds")
 export class CampgroundsController {
@@ -28,10 +27,9 @@ export class CampgroundsController {
     @Body() createCampgroundDto: CreateCampgroundDto,
     @Req() req,
     @User("user") reqUser: ReqUserDTO,
-    @UploadedFiles() files: Array<Express.Multer.File>,
+    @UploadedFiles() files: Express.Multer.File[],
   ) {
-    console.log(files);
-    const { _id } = await this.campgroundsService.create(createCampgroundDto, reqUser);
+    const { _id } = await this.campgroundsService.create(createCampgroundDto, reqUser, files);
     req.flash("success", "Succesfully created new Camp");
     return { url: `/campgrounds/${_id}` };
   }
@@ -52,9 +50,9 @@ export class CampgroundsController {
     };
   }
 
-  @Get(":id")
+  @Get(":campId")
   @Page("campground")
-  async findOne(@Param("id") id: string) {
+  async findOne(@Param("campId") id: string) {
     const { location, description, title, price, images, _id, reviews, author } =
       await this.campgroundsService.findOne(id);
     return {
@@ -70,11 +68,11 @@ export class CampgroundsController {
     };
   }
 
-  @Get(":id/edit")
+  @Get(":campId/edit")
   @isLogged()
   @isAuthor()
   @Page("campground_update")
-  async updateCamp(@Param("id") id: string) {
+  async updateCamp(@Param("campId") id: string) {
     const { location, description, title, price, images, _id, author } =
       await this.campgroundsService.findOne(id);
     return {
@@ -89,12 +87,12 @@ export class CampgroundsController {
     };
   }
 
-  @Put(":id")
+  @Put(":campId")
   @isLogged()
   @isAuthor()
   @Redirect()
   async update(
-    @Param("id") id: string,
+    @Param("campId") id: string,
     @Body() updateCampgroundDto: UpdateCampgroundDto,
     @Req() req,
   ) {
@@ -103,11 +101,11 @@ export class CampgroundsController {
     return { url: `/campgrounds/${_id}` };
   }
 
-  @Delete(":id")
+  @Delete(":campId")
   @isLogged()
   @isAuthor()
   @Redirect("/campgrounds", 301)
-  async remove(@Param("id") id: string) {
+  async remove(@Param("campId") id: string) {
     await this.campgroundsService.remove(id);
   }
 }

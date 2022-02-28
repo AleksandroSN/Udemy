@@ -1,9 +1,23 @@
+import { CampgroundImagesDTO } from "@shared";
 import { CreateCampgroundDto } from "../dto/create-campground.dto";
 
-export const seedData: CreateCampgroundDto[] = [
+class SeedDataModel extends CreateCampgroundDto {
+  images: CampgroundImagesDTO[];
+
+  reviews: string[];
+
+  author: string;
+}
+
+export const seedData: SeedDataModel[] = [
   {
     title: "First",
-    image: "https://source.unsplash.com/collection/484351",
+    images: [
+      {
+        path: "https://source.unsplash.com/collection/484351",
+        url: "https://source.unsplash.com/collection/484351",
+      },
+    ],
     price: "0",
     description: "My First bootcamp",
     location: "Los Angeles",
@@ -12,7 +26,12 @@ export const seedData: CreateCampgroundDto[] = [
   },
   {
     title: "Second",
-    image: "https://source.unsplash.com/collection/484351",
+    images: [
+      {
+        path: "https://source.unsplash.com/collection/484351",
+        url: "https://source.unsplash.com/collection/484351",
+      },
+    ],
     price: "1000",
     description: "My Second bootcamp",
     location: "Ilinois",
@@ -21,7 +40,12 @@ export const seedData: CreateCampgroundDto[] = [
   },
   {
     title: "Third",
-    image: "https://source.unsplash.com/collection/484351",
+    images: [
+      {
+        path: "https://source.unsplash.com/collection/484351",
+        url: "https://source.unsplash.com/collection/484351",
+      },
+    ],
     price: "2000",
     description: "My Third bootcamp",
     location: "New York",
@@ -30,7 +54,12 @@ export const seedData: CreateCampgroundDto[] = [
   },
   {
     title: "Fourth",
-    image: "https://source.unsplash.com/collection/484351",
+    images: [
+      {
+        path: "https://source.unsplash.com/collection/484351",
+        url: "https://source.unsplash.com/collection/484351",
+      },
+    ],
     price: "3000",
     description: "My Fourth bootcamp",
     location: "Paris",
@@ -39,7 +68,12 @@ export const seedData: CreateCampgroundDto[] = [
   },
   {
     title: "Fifth",
-    image: "https://source.unsplash.com/collection/484351",
+    images: [
+      {
+        path: "https://source.unsplash.com/collection/484351",
+        url: "https://source.unsplash.com/collection/484351",
+      },
+    ],
     price: "4000",
     description: "My Fifth bootcamp",
     location: "Pekin",

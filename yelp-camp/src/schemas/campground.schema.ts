@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { CampgroundImagesDTO } from "@shared";
 import { v4 as uuid } from "uuid";
 import { Document, Schema as MongooseSchema } from "mongoose";
 import { Review } from "./review.schema";
@@ -15,15 +16,15 @@ export class Campground extends Document {
   title: string;
 
   @Prop()
-  image: string;
+  images: CampgroundImagesDTO[];
 
   @Prop({ type: Number, min: 0 })
   price: number;
 
-  @Prop()
+  @Prop({ type: String })
   description: string;
 
-  @Prop()
+  @Prop({ type: String })
   location: string;
 
   @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: Review.name }] })

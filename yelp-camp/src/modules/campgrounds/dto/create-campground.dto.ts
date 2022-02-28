@@ -7,10 +7,6 @@ export class CreateCampgroundDto {
 
   @IsString()
   @IsNotEmpty()
-  image: string;
-
-  @IsString()
-  @IsNotEmpty()
   price: string;
 
   @IsString()
@@ -20,8 +16,4 @@ export class CreateCampgroundDto {
   @IsString()
   @IsNotEmpty()
   location: string;
-
-  reviews: string[];
-
-  author: string;
 }

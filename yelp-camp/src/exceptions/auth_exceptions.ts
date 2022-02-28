@@ -19,6 +19,7 @@ export class AuthException implements ExceptionFilter {
       request.flash("error", "Please login or register");
       response.redirect(LOGIN_PAGE);
     } else {
+      console.log(exception);
       response
         .status(400)
         .render(PATH_TO_ERROR_PAGE, { error: JSON.stringify(exception.getResponse()) });

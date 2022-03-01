@@ -1,7 +1,7 @@
 <% for (let campground of campgrounds) {%>
   <div class="max-w-xs bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="/campgrounds/<%= campground._id%>">
-      <img class="p-8 rounded-t-lg w-full aspect-square" src="<%= campground.image %>" alt="product image" />
+      <img class="p-8 rounded-t-lg w-full aspect-square" src="<%= campground.images[0].url %>" alt="product image" />
     </a>
     <div class="px-5 pb-5">
       <a href="#">

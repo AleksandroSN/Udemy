@@ -14,7 +14,11 @@ export const seedData: SeedDataModel[] = [
     title: "First",
     images: [
       {
-        path: "https://source.unsplash.com/collection/484351",
+        path: "",
+        url: "https://res.cloudinary.com/dbpzpws3m/image/upload/v1646038666/sample.jpg",
+      },
+      {
+        path: "",
         url: "https://source.unsplash.com/collection/484351",
       },
     ],
@@ -28,7 +32,11 @@ export const seedData: SeedDataModel[] = [
     title: "Second",
     images: [
       {
-        path: "https://source.unsplash.com/collection/484351",
+        path: "",
+        url: "https://res.cloudinary.com/dbpzpws3m/image/upload/v1646038672/samples/sheep.jpg",
+      },
+      {
+        path: "",
         url: "https://source.unsplash.com/collection/484351",
       },
     ],
@@ -42,7 +50,11 @@ export const seedData: SeedDataModel[] = [
     title: "Third",
     images: [
       {
-        path: "https://source.unsplash.com/collection/484351",
+        path: "",
+        url: "https://res.cloudinary.com/dbpzpws3m/image/upload/v1646038673/samples/bike.jpg",
+      },
+      {
+        path: "",
         url: "https://source.unsplash.com/collection/484351",
       },
     ],
@@ -56,7 +68,11 @@ export const seedData: SeedDataModel[] = [
     title: "Fourth",
     images: [
       {
-        path: "https://source.unsplash.com/collection/484351",
+        path: "",
+        url: "https://res.cloudinary.com/dbpzpws3m/image/upload/v1646038671/samples/animals/reindeer.jpg",
+      },
+      {
+        path: "",
         url: "https://source.unsplash.com/collection/484351",
       },
     ],
@@ -70,7 +86,11 @@ export const seedData: SeedDataModel[] = [
     title: "Fifth",
     images: [
       {
-        path: "https://source.unsplash.com/collection/484351",
+        path: "",
+        url: "https://res.cloudinary.com/dbpzpws3m/image/upload/v1646038669/samples/animals/cat.jpg",
+      },
+      {
+        path: "",
         url: "https://source.unsplash.com/collection/484351",
       },
     ],

@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { User, UserSchema } from "@schemas/user.schema";
 import { UsersRepository } from "@repositories/users.repository";
-import * as passportLocalMongoose from "passport-local-mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
 import { UsersService } from "./users.service";
 import { UsersController } from "./users.controller";
 

@@ -3,11 +3,11 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { Logger } from "@nestjs/common";
 import { AppModule } from "@modules";
-import * as methodOverride from "method-override";
-import * as ejsMate from "ejs-mate";
-import * as session from "express-session";
-import * as flash from "connect-flash";
-import * as passport from "passport";
+import methodOverride from "method-override";
+import session from "express-session";
+import ejsMate from "ejs-mate";
+import flash from "connect-flash";
+import passport from "passport";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

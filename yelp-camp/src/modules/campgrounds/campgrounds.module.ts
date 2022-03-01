@@ -5,6 +5,7 @@ import { Campground, CampgroundSchema } from "@schemas/campground.schema";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
 import { CloudinaryModule } from "@modules/cloudinary";
 import { UsersModule } from "@modules/users";
+import { MapboxModule } from "@modules/mapbox";
 import { memoryStorage } from "multer";
 import { CampgroundsService } from "./campgrounds.service";
 import { CampgroundsController } from "./campgrounds.controller";
@@ -17,6 +18,7 @@ import { CampgroundsController } from "./campgrounds.controller";
     MongooseModule.forFeature([{ name: Campground.name, schema: CampgroundSchema }]),
     forwardRef(() => UsersModule),
     forwardRef(() => CloudinaryModule),
+    forwardRef(() => MapboxModule),
   ],
   controllers: [CampgroundsController],
   providers: [CampgroundsService, CampgroundRepository],

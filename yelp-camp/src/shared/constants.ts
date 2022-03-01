@@ -8,3 +8,4 @@ export const CAMPGROUNDS_PAGE = "/campgrounds";
 export const REGISTER_PAGE = "/register";
 export const CLOUDINARY = "Cloudinary";
 export const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "svg", "bmp", "webp"];
+export const MAPBOX = "Mapbox";

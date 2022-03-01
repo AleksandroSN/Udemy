@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { CloudinaryService } from "@modules/cloudinary";
+import { MapboxService } from "@modules/mapbox";
 import { UsersRepository } from "@repositories/users.repository";
 import { CampgroundImagesDTO, ReqUserDTO } from "@shared";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
@@ -12,6 +13,7 @@ export class CampgroundsService {
     private readonly campgroundRepository: CampgroundRepository,
     private readonly userRepository: UsersRepository,
     private readonly cloudinaryService: CloudinaryService,
+    private readonly mapboxService: MapboxService,
   ) {}
 
   async create(
@@ -25,6 +27,8 @@ export class CampgroundsService {
       url: response.secure_url,
       path: response.public_id,
     }));
+    const coordinates = await this.mapboxService.forward(createCampgroundDto.location);
+    console.log(coordinates);
     const author = await this.userRepository.findOne(reqUser._id);
     const campground = await this.campgroundRepository.create(
       createCampgroundDto,

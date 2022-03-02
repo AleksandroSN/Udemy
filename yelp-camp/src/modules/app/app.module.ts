@@ -15,7 +15,6 @@ import {
   RedirectFilter,
 } from "@exceptions";
 import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 
 @Module({
   imports: [
@@ -34,7 +33,6 @@ import { AppService } from "./app.service";
   ],
   controllers: [AppController],
   providers: [
-    AppService,
     {
       provide: APP_FILTER,
       useClass: NotFoundExceptionFilter,

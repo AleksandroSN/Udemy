@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     maxWidth: {
       "30rem": "30rem",
+      "2/3": "66vw",
     },
     extend: {},
   },

@@ -14,6 +14,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const PORT = process.env.PORT || 3000;
   const SESSION_SECRET = process.env.SESSION_SECRET || "my-secret";
+  const MONGO_URL = process.env.MONGO_DB_URI || "";
   const HOST = "0.0.0.0";
 
   app.useStaticAssets(join(__dirname, "..", "public"));
@@ -23,7 +24,7 @@ async function bootstrap() {
   app.use(methodOverride("_method"));
 
   const store = MongoStore.create({
-    mongoUrl: process.env.MONGO_DB_URI,
+    mongoUrl: MONGO_URL,
     touchAfter: 24 * 3600,
     crypto: {
       secret: SESSION_SECRET,

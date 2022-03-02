@@ -8,7 +8,7 @@ import { LocationSchema, Location } from "./campground.location.schema";
 
 export type CampgroundDocument = Campground & Document;
 
-@Schema({ validateBeforeSave: true })
+@Schema({ validateBeforeSave: true, toJSON: { virtuals: true } })
 export class Campground extends Document {
   @Prop({ type: String, default: () => uuid() })
   _id: string;
@@ -39,3 +39,14 @@ export class Campground extends Document {
 }
 
 export const CampgroundSchema = SchemaFactory.createForClass(Campground);
+
+CampgroundSchema.virtual("properties.popupData").get(function () {
+  const link = this._id;
+  const linkTitle = this.title;
+  const popUpDescription = this.description;
+  return {
+    link,
+    linkTitle,
+    popUpDescription,
+  };
+});

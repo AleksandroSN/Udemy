@@ -53,18 +53,9 @@ export class CampgroundsController {
   @Get(":campId")
   @Page("campground")
   async findOne(@Param("campId") id: string) {
-    const { location, description, title, price, images, _id, reviews, author, geometry } =
-      await this.campgroundsService.findOne(id);
+    const campground = await this.campgroundsService.findOne(id);
     return {
-      location,
-      description,
-      title,
-      price,
-      images,
-      _id,
-      reviews,
-      author,
-      geometry,
+      campground,
       docTitle: "One campground ",
     };
   }

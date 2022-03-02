@@ -1,10 +1,17 @@
 mapboxgl.accessToken = mapToken;
-const geoData = JSON.parse(geometry);
+const campgroundGeoData = JSON.parse(campground);
 const map = new mapboxgl.Map({
-  container: "map", // container ID
-  style: "mapbox://styles/mapbox/streets-v11", // style URL
-  center: geoData.coordinates, // starting position [lng, lat]
-  zoom: 9, // starting zoom
+  container: "map",
+  style: "mapbox://styles/mapbox/streets-v11",
+  center: campgroundGeoData.geometry.coordinates,
+  zoom: 10,
 });
 
-new mapboxgl.Marker().setLngLat(geoData.coordinates).addTo(map);
+new mapboxgl.Marker()
+  .setLngLat(campgroundGeoData.geometry.coordinates)
+  .setPopup(
+    new mapboxgl.Popup({ offset: 25, className: "text-black" }).setHTML(
+      `<h3>${campgroundGeoData.title}</h3>`,
+    ),
+  )
+  .addTo(map);

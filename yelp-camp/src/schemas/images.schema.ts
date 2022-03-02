@@ -11,3 +11,7 @@ export class Images extends Document {
 }
 
 export const ImagesSchema = SchemaFactory.createForClass(Images);
+
+ImagesSchema.virtual("thubmnail").get(function () {
+  return this.url.replace("/upload", "/upload/w/200");
+});

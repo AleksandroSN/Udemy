@@ -31,7 +31,7 @@ export const seedData: SeedDataModel[] = [
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.4322, 55.211],
+      coordinates: [34.032, -118.324],
     },
   },
   {
@@ -48,12 +48,12 @@ export const seedData: SeedDataModel[] = [
     ],
     price: "1000",
     description: "My Second bootcamp",
-    location: "Ilinois",
+    location: "Adler",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.4322, 55.211],
+      coordinates: [43.391, 39.983],
     },
   },
   {
@@ -75,7 +75,7 @@ export const seedData: SeedDataModel[] = [
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.4322, 55.211],
+      coordinates: [-73.9866, 40.7306],
     },
   },
   {
@@ -97,7 +97,7 @@ export const seedData: SeedDataModel[] = [
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.4322, 55.211],
+      coordinates: [2.35183, 48.85658],
     },
   },
   {
@@ -114,12 +114,12 @@ export const seedData: SeedDataModel[] = [
     ],
     price: "4000",
     description: "My Fifth bootcamp",
-    location: "Pekin",
+    location: "Beijing",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.4322, 55.211],
+      coordinates: [116.39139, 39.905],
     },
   },
 ];

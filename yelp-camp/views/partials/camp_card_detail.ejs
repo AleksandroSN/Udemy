@@ -5,7 +5,7 @@
 
       <!-- Carousel wrapper -->
       <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-        <% images.forEach((img, i)=> { %>
+        <% campground.images.forEach((img, i)=> { %>
           <% if (i===0) { %>
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
               <img src="<%= img.url %> "
@@ -19,7 +19,7 @@
               <% }}) %>
       </div>
 
-      <% if (images.length> 1) {%>
+      <% if (campground.images.length> 1) {%>
         <!-- Slider controls -->
         <button type="button"
           class="flex absolute top-0 left-0 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
@@ -49,23 +49,23 @@
     </div>
     <div class="max-w-md card-body">
       <h2 class="card-title">
-        Campground title: <%= title %>
+        Campground title: <%= campground.title %>
       </h2>
       <h2 class="card-title">
-        Author: <%= author.username %>
+        Author: <%= campground.author.username %>
       </h2>
       <h2>
-        Location: <%= location %>
+        Location: <%= campground.location %>
       </h2>
-      <h2>$<%= price %>
+      <h2>$<%= campground.price %>
       </h2>
       <p>
-        <%= description %>
+        <%= campground.description %>
       </p>
-      <% if (currentUser && currentUser.user.username===author.username) { %>
+      <% if (currentUser && currentUser.user.username===campground.author.username) { %>
         <div class="card-actions mt-auto">
-          <a href="/campgrounds/<%= _id %>/edit" class="btn glass rounded-full">Edit</a>
-          <form action="/campgrounds/<%= _id %>?_method=DELETE" method="post">
+          <a href="/campgrounds/<%= campground._id %>/edit" class="btn glass rounded-full">Edit</a>
+          <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
             <button type="submit" class="btn glass rounded-full">Delete</button>
           </form>
         </div>
@@ -75,7 +75,7 @@
   </div>
   <div class="w-full">
     <h2 class="mb-4">Reviews</h2>
-    <form action="/campgrounds/<%= _id %>/review" method="POST" class="max-w-xl">
+    <form action="/campgrounds/<%= campground._id %>/review" method="POST" class="max-w-xl">
       <div class="mb-4">
         <label for="review">Add review</label>
         <textarea cols="50" class="textarea textarea-bordered" name="body" placeholder="Review" id="review"></textarea>
@@ -94,7 +94,7 @@
       <button type="submit" class="btn glass rounded-full block">Submit</button>
     </form>
     <!-- <div class="card glass lg:card-side text-neutral-content"> -->
-    <% for (review of reviews) { %>
+    <% for (review of campground.reviews) { %>
       <div class="card glass text-neutral-content gap-4 p-4 mb-4">
         <li>
           <%= review.author.username %>
@@ -123,5 +123,6 @@
 </div>
 <div id='map' class="w-full h-80"></div>
 <script>
-  const geometry = '<%- JSON.stringify(geometry) %>'
+  const campground = '<%- JSON.stringify(campground) %>'
+  const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
 </script>

@@ -5,6 +5,7 @@ import { Logger } from "@nestjs/common";
 import { AppModule } from "@modules";
 import methodOverride from "method-override";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import ejsMate from "ejs-mate";
 import flash from "connect-flash";
 import passport from "passport";
@@ -20,8 +21,18 @@ async function bootstrap() {
   app.engine("ejs", ejsMate);
   app.setViewEngine("ejs");
   app.use(methodOverride("_method"));
+
+  const store = MongoStore.create({
+    mongoUrl: process.env.MONGO_DB_URI,
+    touchAfter: 24 * 3600,
+    crypto: {
+      secret: SESSION_SECRET,
+    },
+  });
+
   app.use(
     session({
+      store,
       secret: SESSION_SECRET,
       resave: false,
       saveUninitialized: false,

@@ -3546,6 +3546,10 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .-mx-1\.5 {
   margin-left: -0.375rem;
   margin-right: -0.375rem;
@@ -3561,10 +3565,6 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 .-my-1 {
   margin-top: -0.25rem;
   margin-bottom: -0.25rem;
-}
-.my-4 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -3584,9 +3584,6 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 .mt-2 {
   margin-top: 0.5rem;
 }
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -3601,6 +3598,9 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 }
 .mt-auto {
   margin-top: auto;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .mt-1 {
   margin-top: 0.25rem;
@@ -3863,6 +3863,10 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 .rounded-none {
   border-radius: 0px;
 }
+.rounded-t-2xl {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
 .rounded-t-lg {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
@@ -3878,14 +3882,6 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 .rounded-l-lg {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-}
-.rounded-b-lg {
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
-.rounded-t-2xl {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
 }
 .border {
   border-width: 1px;
@@ -4535,11 +4531,6 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
   background-color: rgb(28 100 242 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:bg-gray-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
-}
-
 .dark .dark\:bg-blue-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(195 221 253 / var(--tw-bg-opacity));
@@ -4547,6 +4538,11 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
 
 .dark .dark\:bg-gray-800\/30 {
   background-color: rgb(31 41 55 / 0.3);
+}
+
+.dark .dark\:bg-gray-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:bg-green-200 {
@@ -4713,16 +4709,16 @@ body[dir=rtl] .checkbox:checked,body[dir=rtl] .checkbox[checked=true] {
     height: 1.5rem;
   }
 
-  .sm\:w-auto {
-    width: auto;
-  }
-
   .sm\:w-10 {
     width: 2.5rem;
   }
 
   .sm\:w-6 {
     width: 1.5rem;
+  }
+
+  .sm\:w-auto {
+    width: auto;
   }
 
   .sm\:p-6 {

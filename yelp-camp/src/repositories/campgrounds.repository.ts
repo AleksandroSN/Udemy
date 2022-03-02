@@ -1,3 +1,4 @@
+import { Geometry } from "@mapbox/mapbox-sdk/services/geocoding";
 import { CreateCampgroundDto, UpdateCampgroundDto } from "@modules/campgrounds/dto";
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
@@ -16,9 +17,15 @@ export class CampgroundRepository {
     createCampgroundDto: CreateCampgroundDto,
     author: User,
     images: CampgroundImagesDTO[],
+    geometry: Geometry,
   ): Promise<Campground> {
     try {
-      const campground = new this.campgroundModel({ ...createCampgroundDto, author, images });
+      const campground = new this.campgroundModel({
+        ...createCampgroundDto,
+        author,
+        images,
+        geometry,
+      });
       const result = await campground.save();
       return result;
     } catch (error) {

@@ -53,7 +53,7 @@ export class CampgroundsController {
   @Get(":campId")
   @Page("campground")
   async findOne(@Param("campId") id: string) {
-    const { location, description, title, price, images, _id, reviews, author } =
+    const { location, description, title, price, images, _id, reviews, author, geometry } =
       await this.campgroundsService.findOne(id);
     return {
       location,
@@ -64,6 +64,7 @@ export class CampgroundsController {
       _id,
       reviews,
       author,
+      geometry,
       docTitle: "One campground ",
     };
   }

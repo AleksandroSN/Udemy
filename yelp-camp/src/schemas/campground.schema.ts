@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CampgroundImagesDTO } from "@shared";
 import { v4 as uuid } from "uuid";
 import { Document, Schema as MongooseSchema } from "mongoose";
 import { Review } from "./review.schema";
 import { User } from "./user.schema";
+import { Images, ImagesSchema } from "./images.schema";
+import { LocationSchema, Location } from "./campground.location.schema";
 
 export type CampgroundDocument = Campground & Document;
 
@@ -15,8 +16,11 @@ export class Campground extends Document {
   @Prop({ unique: true })
   title: string;
 
-  @Prop()
-  images: CampgroundImagesDTO[];
+  @Prop({ type: LocationSchema, required: true })
+  geometry: Location;
+
+  @Prop({ type: [ImagesSchema], required: true })
+  images: Images[];
 
   @Prop({ type: Number, min: 0 })
   price: number;

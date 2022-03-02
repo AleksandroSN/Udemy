@@ -1,4 +1,4 @@
-import { CampgroundImagesDTO } from "@shared";
+import { CampgroundImagesDTO, CampgroundLocationDTO } from "@shared";
 import { CreateCampgroundDto } from "../dto/create-campground.dto";
 
 class SeedDataModel extends CreateCampgroundDto {
@@ -7,6 +7,8 @@ class SeedDataModel extends CreateCampgroundDto {
   reviews: string[];
 
   author: string;
+
+  geometry: CampgroundLocationDTO;
 }
 
 export const seedData: SeedDataModel[] = [
@@ -27,6 +29,10 @@ export const seedData: SeedDataModel[] = [
     location: "Los Angeles",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
+    geometry: {
+      type: "Point",
+      coordinates: [34.4322, 55.211],
+    },
   },
   {
     title: "Second",
@@ -45,6 +51,10 @@ export const seedData: SeedDataModel[] = [
     location: "Ilinois",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
+    geometry: {
+      type: "Point",
+      coordinates: [34.4322, 55.211],
+    },
   },
   {
     title: "Third",
@@ -63,6 +73,10 @@ export const seedData: SeedDataModel[] = [
     location: "New York",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
+    geometry: {
+      type: "Point",
+      coordinates: [34.4322, 55.211],
+    },
   },
   {
     title: "Fourth",
@@ -81,6 +95,10 @@ export const seedData: SeedDataModel[] = [
     location: "Paris",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
+    geometry: {
+      type: "Point",
+      coordinates: [34.4322, 55.211],
+    },
   },
   {
     title: "Fifth",
@@ -99,5 +117,9 @@ export const seedData: SeedDataModel[] = [
     location: "Pekin",
     reviews: [],
     author: "6213ae657a735e659a71eb1a",
+    geometry: {
+      type: "Point",
+      coordinates: [34.4322, 55.211],
+    },
   },
 ];

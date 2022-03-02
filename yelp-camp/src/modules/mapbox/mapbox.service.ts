@@ -19,7 +19,7 @@ export class MapboxService {
       })
       .send();
     const geoDataBody = geoData.body as GeocodeResponse;
-    const geoDataFeatures = geoDataBody.features;
-    return geoDataFeatures;
+    const geoDataGeometry = geoDataBody.features[0].geometry;
+    return geoDataGeometry;
   }
 }

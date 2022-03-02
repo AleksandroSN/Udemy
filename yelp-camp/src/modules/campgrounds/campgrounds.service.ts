@@ -27,13 +27,13 @@ export class CampgroundsService {
       url: response.secure_url,
       path: response.public_id,
     }));
-    const coordinates = await this.mapboxService.forward(createCampgroundDto.location);
-    console.log(coordinates);
+    const geoData = await this.mapboxService.forward(createCampgroundDto.location);
     const author = await this.userRepository.findOne(reqUser._id);
     const campground = await this.campgroundRepository.create(
       createCampgroundDto,
       author,
       campImages,
+      geoData,
     );
     return campground;
   }

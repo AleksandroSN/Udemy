@@ -10,6 +10,8 @@ import ejsMate from "ejs-mate";
 import flash from "connect-flash";
 import passport from "passport";
 import mongoSanitize from "express-mongo-sanitize";
+import helmet from "helmet";
+import { CONNECT_SRC_URLS, SCRIPT_SRC_URLS, STYLE_SRC_URLS } from "@shared";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -41,6 +43,9 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        secure: true,
+        httpOnly: true,
+        sameSite: "none",
       },
     }),
   );
@@ -53,6 +58,36 @@ async function bootstrap() {
     res.locals.error = req.flash("error");
     next();
   });
+
+  app.use(
+    helmet({
+      crossOriginEmbedderPolicy: false,
+      crossOriginResourcePolicy: {
+        policy: "cross-origin",
+      },
+    }),
+  );
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        defaultSrc: [],
+        connectSrc: ["'self'", ...CONNECT_SRC_URLS],
+        scriptSrc: ["'unsafe-inline'", "'self'", ...SCRIPT_SRC_URLS],
+        styleSrc: ["'self'", "'unsafe-inline'", ...STYLE_SRC_URLS],
+        workerSrc: ["'self'", "blob:"],
+        childSrc: ["blob:"],
+        objectSrc: [],
+        imgSrc: [
+          "'self'",
+          "blob:",
+          "data:",
+          `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/`,
+          "https://images.unsplash.com",
+        ],
+        fontSrc: ["'self'"],
+      },
+    }),
+  );
 
   await app.listen(PORT, HOST, () => {
     Logger.log(`Nest listening on http://${HOST}:${PORT}`, "Bootstrap");

@@ -9,6 +9,7 @@ import MongoStore from "connect-mongo";
 import ejsMate from "ejs-mate";
 import flash from "connect-flash";
 import passport from "passport";
+import mongoSanitize from "express-mongo-sanitize";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -22,6 +23,7 @@ async function bootstrap() {
   app.engine("ejs", ejsMate);
   app.setViewEngine("ejs");
   app.use(methodOverride("_method"));
+  app.use(mongoSanitize());
 
   const store = MongoStore.create({
     mongoUrl: MONGO_URL,

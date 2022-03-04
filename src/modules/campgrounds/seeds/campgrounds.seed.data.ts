@@ -31,7 +31,7 @@ export const seedData: SeedDataModel[] = [
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [34.032, -118.324],
+      coordinates: [-118.2439, 34.0544],
     },
   },
   {
@@ -53,7 +53,7 @@ export const seedData: SeedDataModel[] = [
     author: "6213ae657a735e659a71eb1a",
     geometry: {
       type: "Point",
-      coordinates: [43.391, 39.983],
+      coordinates: [39.983, 43.391],
     },
   },
   {

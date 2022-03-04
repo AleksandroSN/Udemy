@@ -8,12 +8,12 @@
         <% campground.images.forEach((img, i)=> { %>
           <% if (i===0) { %>
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <img src="<%= img.url %> "
-                class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+              <img src="<%= img.url %>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                alt="...">
             </div>
             <% } else { %>
               <div class="hidden duration-700 ease-in-out" data-carousel-item="">
-                <img src="<%= img.url %> "
+                <img src="<%= img.url %>"
                   class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
               </div>
               <% }}) %>

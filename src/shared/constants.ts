@@ -32,3 +32,10 @@ export const CONNECT_SRC_URLS = [
   "https://*.tiles.mapbox.com",
   "https://events.mapbox.com",
 ];
+
+export const IMGS_SRC_URLS = [
+  "https://images.unsplash.com",
+  "https://source.unsplash.com",
+  "https://picsum.photos",
+  "https://i.picsum.photos",
+];

@@ -11,7 +11,7 @@ import flash from "connect-flash";
 import passport from "passport";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
-import { CONNECT_SRC_URLS, SCRIPT_SRC_URLS, STYLE_SRC_URLS } from "@shared";
+import { CONNECT_SRC_URLS, IMGS_SRC_URLS, SCRIPT_SRC_URLS, STYLE_SRC_URLS } from "@shared";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -82,7 +82,7 @@ async function bootstrap() {
           "blob:",
           "data:",
           `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/`,
-          "https://images.unsplash.com",
+          ...IMGS_SRC_URLS,
         ],
         fontSrc: ["'self'"],
       },

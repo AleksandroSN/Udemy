@@ -16,10 +16,10 @@ export class AuthException implements ExceptionFilter {
     const request = ctx.getRequest();
 
     if (exception instanceof UnauthorizedException || exception instanceof ForbiddenException) {
-      request.flash("error", "Please login or register");
+      const { message } = exception;
+      request.flash("error", message);
       response.redirect(LOGIN_PAGE);
     } else {
-      console.log(exception);
       response
         .status(400)
         .render(PATH_TO_ERROR_PAGE, { error: JSON.stringify(exception.getResponse()) });

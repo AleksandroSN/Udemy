@@ -20,6 +20,8 @@ export class AuthController {
     }
     const redirectUrl = session.returnTo || CAMPGROUNDS_PAGE;
     req.flash("success", "Heeeelo");
+    // eslint-disable-next-line no-param-reassign
+    session.returnTo = "";
     return { url: redirectUrl };
   }
 

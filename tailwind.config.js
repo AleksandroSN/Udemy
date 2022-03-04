@@ -1,5 +1,6 @@
 module.exports = {
   content: ["./views/**/*.{html,js,ejs}", "./node_modules/flowbite/**/*.js"],
+  darkMode: "media",
   theme: {
     extend: {
       maxWidth: {

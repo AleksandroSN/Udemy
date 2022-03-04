@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
+<nav class="bg-gray-200 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
   <div class="container flex flex-wrap items-center mx-auto gap-12">
     <a href="/" class="flex">
       <%- include("../partials/logo") %>
@@ -22,9 +22,7 @@
     <div class="hidden w-full md:block flex-node md:flex-1" id="mobile-menu">
       <ul class="flex flex-col gap-2 md:gap-8 mt-4 md:flex-row md:mt-0 md:text-sm md:font-medium">
         <li>
-          <a href="/"
-            class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-            aria-current="page">Home</a>
+          <a href="/" class="block py-2 pr-4 pl-3 text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
         </li>
         <% if (!currentUser) { %>
           <li class="ml-0 md:ml-auto">

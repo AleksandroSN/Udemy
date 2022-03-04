@@ -29,8 +29,7 @@ async function bootstrap() {
 
   const store = MongoStore.create({
     mongoUrl: MONGO_URL,
-    autoRemove: "interval",
-    autoRemoveInterval: 60,
+    touchAfter: 24 * 3600,
     crypto: {
       secret: SESSION_SECRET,
     },
@@ -44,7 +43,7 @@ async function bootstrap() {
       saveUninitialized: false,
       cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7,
-        sameSite: "none",
+        // sameSite: "none",
       },
     }),
   );
@@ -52,7 +51,6 @@ async function bootstrap() {
   app.use(passport.session());
   app.use(flash());
   app.use((req, res, next) => {
-    // console.log(req.user);
     res.locals.currentUser = req.user ?? undefined;
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");

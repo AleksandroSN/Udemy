@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Redirect, Req, Session } from "@nestjs/common";
-import { CAMPGROUNDS_PAGE, LocalAuth, LOGIN_PAGE, Page } from "@shared";
+import { CAMPGROUNDS_PAGE, LocalAuth, Page } from "@shared";
 import { Session as ExpSession } from "express-session";
 
 interface SessionWithRedirect extends ExpSession {
@@ -12,12 +12,6 @@ export class AuthController {
   @LocalAuth()
   @Redirect()
   login(@Req() req, @Session() session: SessionWithRedirect) {
-    if (req.user.error) {
-      const { user } = req;
-      const { error } = user;
-      req.flash("error", error.message);
-      return { url: LOGIN_PAGE };
-    }
     const redirectUrl = session.returnTo || CAMPGROUNDS_PAGE;
     req.flash("success", "Heeeelo");
     // eslint-disable-next-line no-param-reassign

@@ -28,7 +28,7 @@ export const seedData: SeedDataModel[] = [
     description: "My First bootcamp",
     location: "Los Angeles",
     reviews: [],
-    author: "6213ae657a735e659a71eb1a",
+    author: "622220460919d6a37c0d6ffb",
     geometry: {
       type: "Point",
       coordinates: [-118.2439, 34.0544],
@@ -50,7 +50,7 @@ export const seedData: SeedDataModel[] = [
     description: "My Second bootcamp",
     location: "Adler",
     reviews: [],
-    author: "6213ae657a735e659a71eb1a",
+    author: "622220460919d6a37c0d6ffb",
     geometry: {
       type: "Point",
       coordinates: [39.983, 43.391],
@@ -72,7 +72,7 @@ export const seedData: SeedDataModel[] = [
     description: "My Third bootcamp",
     location: "New York",
     reviews: [],
-    author: "6213ae657a735e659a71eb1a",
+    author: "622220460919d6a37c0d6ffb",
     geometry: {
       type: "Point",
       coordinates: [-73.9866, 40.7306],
@@ -94,7 +94,7 @@ export const seedData: SeedDataModel[] = [
     description: "My Fourth bootcamp",
     location: "Paris",
     reviews: [],
-    author: "6213ae657a735e659a71eb1a",
+    author: "622220460919d6a37c0d6ffb",
     geometry: {
       type: "Point",
       coordinates: [2.35183, 48.85658],
@@ -116,7 +116,7 @@ export const seedData: SeedDataModel[] = [
     description: "My Fifth bootcamp",
     location: "Beijing",
     reviews: [],
-    author: "6213ae657a735e659a71eb1a",
+    author: "622220460919d6a37c0d6ffb",
     geometry: {
       type: "Point",
       coordinates: [116.39139, 39.905],

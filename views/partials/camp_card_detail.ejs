@@ -1,88 +1,55 @@
-<div class="flex items-center w-full px-4 py-10 bg-cover card bg-base-200"
-  style="background-image: url(&quot;https://picsum.photos/id/314/1000/300&quot;);">
-  <div class="card glass lg:card-side text-neutral-content mb-8 w-full">
-    <div id="default-carousel" data-carousel="slide" class="relative w-full">
-
-      <!-- Carousel wrapper -->
-      <div class="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
-        <% campground.images.forEach((img, i)=> { %>
-          <% if (i===0) { %>
-            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <img src="<%= img.url %>" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                alt="...">
-            </div>
-            <% } else { %>
-              <div class="hidden duration-700 ease-in-out" data-carousel-item="">
-                <img src="<%= img.url %>"
-                  class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+<div
+  class="flex items-center w-full px-4 pt-4 pb-10 card bg-gray-200 dark:bg-base-200 text-gray-700 dark:text-neutral-content">
+  <div class="card glass lg:card-side mb-8 w-full">
+    <% if (campground.images.length===1) { %>
+      <%- include("carousel_static") %>
+        <% } else { %>
+          <%- include("carousel_slide") %>
+            <% } %>
+              <div class="flex-auto card-body">
+                <h2 class="card-title">
+                  Campground title: <%= campground.title %>
+                </h2>
+                <h2 class="card-title">
+                  Author: <%= campground.author.username %>
+                </h2>
+                <h2>
+                  Location: <%= campground.location %>
+                </h2>
+                <h2>$<%= campground.price %>
+                </h2>
+                <p>
+                  <%= campground.description %>
+                </p>
+                <% if (currentUser && currentUser.user.username===campground.author.username) { %>
+                  <div class="card-actions mt-auto">
+                    <a href="/campgrounds/<%= campground._id %>/edit"
+                      class="btn text-gray-700 dark:text-neutral-content glass rounded-full">Edit</a>
+                    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+                      <button type="submit"
+                        class="btn text-gray-700 dark:text-neutral-content glass rounded-full">Delete</button>
+                    </form>
+                    <a href="/campgrounds" class="btn text-gray-700 dark:text-neutral-content glass rounded-full">Back
+                      to All Campgrounds</a>
+                  </div>
+                  <% } else {%>
+                    <div class="card-actions mt-auto">
+                      <a href="/campgrounds" class="btn text-gray-700 dark:text-neutral-content glass rounded-full">Back
+                        to All Campgrounds</a>
+                    </div>
+                    <% } %>
               </div>
-              <% }}) %>
-      </div>
-
-      <% if (campground.images.length> 1) {%>
-        <!-- Slider controls -->
-        <button type="button"
-          class="flex absolute top-0 left-0 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-          data-carousel-prev>
-          <span
-            class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-            <span class="hidden">Previous</span>
-          </span>
-        </button>
-        <button type="button"
-          class="flex absolute top-0 right-0 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
-          data-carousel-next>
-          <span
-            class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-            <span class="hidden">Next</span>
-          </span>
-        </button>
-        <% } %>
-    </div>
-    <div class="max-w-md card-body">
-      <h2 class="card-title">
-        Campground title: <%= campground.title %>
-      </h2>
-      <h2 class="card-title">
-        Author: <%= campground.author.username %>
-      </h2>
-      <h2>
-        Location: <%= campground.location %>
-      </h2>
-      <h2>$<%= campground.price %>
-      </h2>
-      <p>
-        <%= campground.description %>
-      </p>
-      <% if (currentUser && currentUser.user.username===campground.author.username) { %>
-        <div class="card-actions mt-auto">
-          <a href="/campgrounds/<%= campground._id %>/edit" class="btn glass rounded-full">Edit</a>
-          <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
-            <button type="submit" class="btn glass rounded-full">Delete</button>
-          </form>
-        </div>
-        <% } %>
-          <a href="/campgrounds" class="btn glass rounded-full">Back to All Campgrounds</a>
-    </div>
   </div>
   <div class="w-full">
     <h2 class="mb-4">Reviews</h2>
-    <form action="/campgrounds/<%= campground._id %>/review" method="POST" class="max-w-xl">
-      <div class="mb-4">
+    <form action="/campgrounds/<%= campground._id %>/review" method="POST" class="max-w-xl mb-12">
+      <div class="mb-4 flex flex-col gap-4">
         <label for="review">Add review</label>
         <textarea cols="50" class="textarea textarea-bordered" name="body" placeholder="Review" id="review"></textarea>
       </div>
-      <div class="mb-4">
+      <div class="mb-12 flex flex-col gap-4">
         <p>Rating</p>
-        <div class="rating">
+        <div class="rating rating-lg">
           <input type="radio" name="rating" class="mask mask-star text-yellow-300 !bg-none bg-yellow-300" value="1">
           <input type="radio" name="rating" class="mask mask-star text-yellow-300 !bg-none bg-yellow-300" value="2"
             checked>
@@ -91,28 +58,28 @@
           <input type="radio" name="rating" class="mask mask-star text-yellow-300 !bg-none bg-yellow-300" value="5">
         </div>
       </div>
-      <button type="submit" class="btn glass rounded-full block">Submit</button>
+      <button type="submit" class="btn text-gray-700 dark:text-neutral-content glass rounded-full block">Submit</button>
     </form>
     <!-- <div class="card glass lg:card-side text-neutral-content"> -->
     <% for (review of campground.reviews) { %>
-      <div class="card glass text-neutral-content gap-4 p-4 mb-4">
-        <li>
+      <div class="card glass gap-4 p-4 mb-4">
+        <p class="capitalize font-bold text-xl">
           <%= review.author.username %>
-        </li>
-        <li>
+        </p>
+        <p>
           <%= review.body %>
-        </li>
+        </p>
         <div class="flex">
           <% for (let i=1; i <=5; i++) {%>
             <% if (i <=review.rating) { %>
               <div class="mask mask-star text-yellow-300 bg-yellow-300 h-5 w-5"></div>
               <% } else { %>
-                <div class="mask mask-star text-yellow-100 bg-yellow-100 h-5 w-5"></div>
+                <div class="mask mask-star text-yellow-300 bg-yellow-300 h-5 w-5 opacity-20"></div>
                 <% } %>
                   <% } %>
         </div>
         <% if (currentUser && currentUser.user.username===review.author.username) { %>
-          <form action="/campgrounds/<%= _id %>/review/<%= review._id %>?_method=DELETE" method="POST">
+          <form action="/campgrounds/<%= campground._id %>/review/<%= review._id %>?_method=DELETE" method="POST">
             <button type="submit">DELETE</button>
           </form>
           <% } %>

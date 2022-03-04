@@ -12,8 +12,10 @@ map.addControl(new mapboxgl.NavigationControl());
 new mapboxgl.Marker()
   .setLngLat(campgroundGeoData.geometry.coordinates)
   .setPopup(
-    new mapboxgl.Popup({ offset: 25, className: "text-black" }).setHTML(
-      `<h3>${campgroundGeoData.title}</h3>`,
-    ),
+    new mapboxgl.Popup({
+      offset: 25,
+      focusAfterOpen: false,
+      className: "text-gray-700 text-xl",
+    }).setHTML(`<h3 class="font-bold mr-3">${campgroundGeoData.title}</h3>`),
   )
   .addTo(map);

@@ -16,3 +16,6 @@
 .home-blur {
   backdrop-filter: blur(3px);
 }
+.home-blur:hover {
+  backdrop-filter: blur(3px);
+}

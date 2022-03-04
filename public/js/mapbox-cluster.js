@@ -98,9 +98,15 @@ map.on("load", () => {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new mapboxgl.Popup()
+    new mapboxgl.Popup({
+      offset: 25,
+      focusAfterOpen: false,
+      className: "text-gray-700 text-xl mr-3",
+    })
       .setLngLat(coordinates)
-      .setHTML(`<a href='/campgrounds/${link}'>${linkTitle}</a><p>${shortDescription}...</p>`)
+      .setHTML(
+        `<a href='/campgrounds/${link}' class="font-bold">${linkTitle}</a><p class="text-gray-500 text-lg">${shortDescription}...</p>`,
+      )
       .addTo(map);
   });
 

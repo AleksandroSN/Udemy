@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
+<nav class="bg-gray-200 border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
   <div class="container flex flex-wrap items-center mx-auto gap-12">
     <a href="/" class="flex">
       <%- include("../partials/logo") %>
@@ -26,26 +26,26 @@
         </li>
         <li>
           <a href="/campgrounds"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Campgrounds</a>
+            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white dark:border-gray-700">Campgrounds</a>
         </li>
         <li>
           <a href="/campgrounds/new"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">New
+            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white dark:border-gray-700">New
             Campgrounds</a>
         </li>
         <% if (!currentUser) { %>
           <li class="ml-0 md:ml-auto">
             <a href="/register"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Register</a>
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white dark:border-gray-700">Register</a>
           </li>
           <li>
             <a href="/login"
-              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</a>
+              class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white dark:border-gray-700">Login</a>
           </li>
           <% } else { %>
             <li class="ml-0 md:ml-auto">
               <a href="/logout"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Logout</a>
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:text-white dark:border-gray-700">Logout</a>
             </li>
             <% } %>
       </ul>

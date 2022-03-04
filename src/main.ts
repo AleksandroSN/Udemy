@@ -29,7 +29,8 @@ async function bootstrap() {
 
   const store = MongoStore.create({
     mongoUrl: MONGO_URL,
-    touchAfter: 24 * 3600,
+    autoRemove: "interval",
+    autoRemoveInterval: 60,
     crypto: {
       secret: SESSION_SECRET,
     },

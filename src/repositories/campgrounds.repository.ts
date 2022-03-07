@@ -35,6 +35,7 @@ export class CampgroundRepository {
 
   async seedData(createCampgroundDto: CreateCampgroundDto[]) {
     try {
+      await this.campgroundModel.deleteMany({});
       const campgrounds = await this.campgroundModel.insertMany(createCampgroundDto);
       return campgrounds;
     } catch (error) {

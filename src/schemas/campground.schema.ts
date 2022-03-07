@@ -13,7 +13,7 @@ export class Campground extends Document {
   @Prop({ type: String, default: () => uuid() })
   _id: string;
 
-  @Prop({ unique: true })
+  @Prop({ required: true })
   title: string;
 
   @Prop({ type: LocationSchema, required: true })

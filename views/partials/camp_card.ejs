@@ -1,4 +1,4 @@
-<% for (let campground of campgrounds) {%>
+<% for (let campground of chunkCampgrounds) {%>
   <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="/campgrounds/<%= campground._id%>">
       <% if (campground.images.length> 0) { %>
@@ -59,9 +59,3 @@
     </div>
   </div>
   <% } %>
-    <script>
-      const campgrounds = '<%- JSON.stringify(campgrounds) %>'
-    </script>
-    <script>
-      const mapToken = '<%- process.env.MAPBOX_TOKEN %>'
-    </script>

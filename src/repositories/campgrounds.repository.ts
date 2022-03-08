@@ -4,7 +4,7 @@ import { BadRequestException, Injectable, NotFoundException } from "@nestjs/comm
 import { InjectModel } from "@nestjs/mongoose";
 import { Campground, CampgroundDocument } from "@schemas/campground.schema";
 import { User } from "@schemas/user.schema";
-import { CampgroundImagesDTO } from "@shared";
+import { CampgroundImagesDTO, Pagination } from "@shared";
 import { Model, UpdateQuery } from "mongoose";
 
 @Injectable()
@@ -43,9 +43,17 @@ export class CampgroundRepository {
     }
   }
 
-  async findAll() {
-    const allCampgrounds = await this.campgroundModel.find();
-    return allCampgrounds;
+  async findAll({ limit, page }: Pagination) {
+    const renderElem = (+page - 1) * +limit;
+    const allCampgrounds = await this.campgroundModel.find({});
+    const chunkCampgrounds = await this.campgroundModel
+      .find()
+      .skip(renderElem)
+      .limit(+limit);
+    return {
+      allCampgrounds,
+      chunkCampgrounds,
+    };
   }
 
   async findOne(id: string) {

@@ -9,8 +9,10 @@ import {
   Redirect,
   Req,
   UploadedFiles,
+  Query,
+  Res,
 } from "@nestjs/common";
-import { isAuthor, isLogged, Page, ReqUserDTO, Uploader, User } from "@shared";
+import { isAuthor, isLogged, Page, Pagination, ReqUserDTO, Uploader, User } from "@shared";
 import { CampgroundsService } from "./campgrounds.service";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
@@ -36,9 +38,9 @@ export class CampgroundsController {
 
   @Get()
   @Page("campgrounds")
-  async findAll() {
-    const campgrounds = await this.campgroundsService.findAll();
-    return { campgrounds, docTitle: "All campgrounds" };
+  async findAll(@Query() pagination: Pagination) {
+    const { allCampgrounds, chunkCampgrounds } = await this.campgroundsService.findAll(pagination);
+    return { allCampgrounds, chunkCampgrounds, pagination, docTitle: "All campgrounds" };
   }
 
   @Get("/new")

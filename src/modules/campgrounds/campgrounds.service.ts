@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { CloudinaryService } from "@modules/cloudinary";
 import { MapboxService } from "@modules/mapbox";
 import { UsersRepository } from "@repositories/users.repository";
-import { CampgroundImagesDTO, ReqUserDTO } from "@shared";
+import { CampgroundImagesDTO, Pagination, ReqUserDTO } from "@shared";
 import { CampgroundRepository } from "@repositories/campgrounds.repository";
 import { CreateCampgroundDto } from "./dto/create-campground.dto";
 import { UpdateCampgroundDto } from "./dto/update-campground.dto";
@@ -38,8 +38,12 @@ export class CampgroundsService {
     return campground;
   }
 
-  async findAll() {
-    return this.campgroundRepository.findAll();
+  async findAll({ limit, page }: Pagination) {
+    const validPaginationData: Pagination = {
+      page: page ?? "1",
+      limit: limit ?? "9",
+    };
+    return this.campgroundRepository.findAll(validPaginationData);
   }
 
   async findOne(id: string) {
